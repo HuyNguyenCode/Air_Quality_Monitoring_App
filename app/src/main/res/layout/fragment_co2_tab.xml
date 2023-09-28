@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="319dp"
+    android:alpha="1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context=".CO2Fragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.9"
+        android:background="@drawable/top_background_main_activity"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <ProgressBar
+            android:id="@+id/vertical_progressbar"
+            style="@style/Widget.ProgressBar.Vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_width="12dp"
+            android:max="10"
+            android:layout_height="match_parent"
+            android:progressDrawable="@drawable/vertical_progess_bar"
+            android:progress="8" />
+
+        <TextView
+            android:id="@+id/index_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/abeezee"
+            android:text="8.0"
+            android:textColor="@color/white"
+            android:textSize="80dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/mode_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/index_text"
+            android:layout_centerInParent="true"
+            android:text="MODERATOR"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/index_text"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/abeezee"
+            android:paddingTop="20dp"
+            android:text="3 MIN AGO"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/refresh_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:alpha="0.9"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/title_list"
+            android:src="@drawable/baseline_refresh_24"
+            app:elevation="0dp"
+            app:pressedTranslationZ="0dp"
+            app:backgroundTint="@android:color/transparent">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/alert_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/title_list"
+            android:src="@drawable/baseline_add_alert_24"
+            app:backgroundTint="@android:color/transparent"
+            app:elevation="0dp"
+            >
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
