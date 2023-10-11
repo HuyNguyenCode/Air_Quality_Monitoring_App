@@ -7,13 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-public class UVIFragment extends Fragment {
+public class PMFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_uvi_tab, container, false);
+        return inflater.inflate(R.layout.fragment_temp_tab, container, false);
     }
 }

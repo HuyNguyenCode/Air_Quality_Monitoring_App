@@ -1,14 +1,18 @@
 package com.example.air_quality_monitoring_app;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CO2Fragment extends Fragment {
+import java.util.ArrayList;
+
+public class CO2Fragment extends Fragment{
+
+
+    ArrayList<String> arrNoti;
 
 
     @Override

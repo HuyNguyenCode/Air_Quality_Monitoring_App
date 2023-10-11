@@ -1,14 +1,9 @@
 package com.example.air_quality_monitoring_app;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import java.util.ArrayList;
 
 public class VpAdapter extends FragmentStateAdapter {
 
@@ -22,15 +17,15 @@ public class VpAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new CO2Fragment();
+                return new TempFragment();
             case 1:
-                return new NO2Fragment();
+                return new HumidityFragment();
             case 2:
-                return new AQIFragment();
-            case 3:
-                return new UVIFragment();
-            default:
                 return new CO2Fragment();
+            case 3:
+                return new PMFragment();
+            default:
+                return new TempFragment();
         }
     }
 

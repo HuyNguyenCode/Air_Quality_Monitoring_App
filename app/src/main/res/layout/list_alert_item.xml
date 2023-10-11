@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="3"
+    android:background="@drawable/box_shadow_alert_item"
+    android:padding="10dp"
+    android:fadingEdgeLength="5sp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="20dp"
+            android:textColor="@color/heading_text_color"
+            android:textStyle="bold"
+            android:id="@+id/alert_title"
+            android:layout_width="wrap_content"
+            android:paddingBottom="5dp"
+            android:layout_height="wrap_content"
+            android:text="High Pollen Concentrations"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="22dp"
+            android:src="@drawable/baseline_access_time_filled_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/alert_time"
+            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintStart_toStartOf="@+id/alert_title">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/alert_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="18sec ago"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/alert_title"
+            app:layout_constraintTop_toBottomOf="@id/alert_title"></TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/title_more"
+            android:src="@drawable/baseline_more_vert_24"
+            app:backgroundTint="@color/black"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:pressedTranslationZ="0dp"
+            android:backgroundTint="@android:color/transparent"
+            app:fabCustomSize="70dp"
+           >
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+</LinearLayout>

@@ -2,20 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="319dp"
+    android:layout_height="wrap_content"
     android:alpha="1"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     tools:context=".CO2Fragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.9"
+        android:alpha="0.8"
         android:background="@drawable/top_background_main_activity"
         android:scaleType="centerCrop" />
 
+<!-- Indicator-->
     <RelativeLayout
+        android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="10dp"
@@ -28,6 +29,7 @@
             style="@style/Widget.ProgressBar.Vertical"
             android:layout_marginLeft="25dp"
             android:layout_width="12dp"
+            android:background="@drawable/rounded_border_drawable"
             android:max="10"
             android:layout_height="match_parent"
             android:progressDrawable="@drawable/vertical_progess_bar"
@@ -105,6 +107,5 @@
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </RelativeLayout>
-
 
 </RelativeLayout>

@@ -7,11 +7,11 @@
 
     <item
         android:id="@+id/navigation_gifts"
-        android:title="@string/title_no2"/>
+        android:title="@string/title_pm"/>
 
     <item
         android:id="@+id/navigation_cart"
-        android:title="@string/title_aqi" />
+        android:title="@string/title_humidity" />
 <!--    <item-->
 <!--        android:id="@+id/navigation_cart"-->
 <!--        android:title="@string/title_uvi" />-->

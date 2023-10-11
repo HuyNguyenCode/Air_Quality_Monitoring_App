@@ -7,12 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-public class NO2Fragment extends Fragment {
+
+public class TempFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_no2_tab, container, false);
+        return inflater.inflate(R.layout.fragment_humidity_tab, container, false);
     }
 }

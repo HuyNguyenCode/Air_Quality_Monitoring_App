@@ -10,5 +10,6 @@
     <color name="ashGrey">#888888</color>
     <color name="primary">#FF9F6B</color>
     <color name="lavender">#8692f7</color>
+    <color name="heading_text_color">#322153</color>
     <color name="bgBottomNavigation">#fe485a</color>
 </resources>
