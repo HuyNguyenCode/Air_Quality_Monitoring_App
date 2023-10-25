@@ -3,10 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
+    tools:context=".GraphActivity"
     android:theme="@style/Theme.AppCompat.Light"
     >
     <!--Header-->
@@ -21,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout 
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -80,90 +79,11 @@
         app:layout_constraintStart_toStartOf="parent"
         >
 
-        <!--Indicator-->
-        <RelativeLayout
-            android:id="@+id/indicator"
-            android:layout_weight="0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!--Background-->
-            <ImageView
-                android:contentDescription="@string/app_name"
-                android:id="@+id/background_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/viewpager"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/living_room_background"
-                android:scaleType="centerCrop" />
-
-            <!--Tab layout-->
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:alpha="0.9"
-                android:background="@drawable/tab_layout_customize"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingHorizontal="10dp"
-                app:itemTextColor="@android:color/white"
-                app:tabIndicator="@drawable/tab_indicator"
-                app:tabIndicatorColor="@color/white"
-                app:tabTextColor="@color/white">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_temp" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_humidity" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_co2" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_pm" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <!--View Pager-->
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_fragment"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="50dp">
-            </androidx.viewpager2.widget.ViewPager2>
 
 
-        </RelativeLayout>
-
-        <!--Alert notification listview-->
-        <ListView
-            android:layout_margin="15dp"
-            android:id="@+id/list_alert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_weight="6"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="10sp"
-            android:fadingEdgeLength="5sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="395dp">
-        </ListView>
 
     </LinearLayout>
+
 
     <!--Navgitaion bottom button-->
     <RelativeLayout

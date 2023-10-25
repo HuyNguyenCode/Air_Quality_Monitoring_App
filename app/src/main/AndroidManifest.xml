@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -8,6 +9,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         tools:targetApi="31">
+        <activity
+            android:name=".GraphActivity"
+            android:exported="false"
+            android:label="@string/title_activity_graph"
+            android:theme="@style/Theme.Air_Quality_Monitoring_App" />
         <activity
             android:name=".HomeActivity"
             android:exported="true"
@@ -21,8 +27,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
 
         <meta-data
             android:name="preloaded_fonts"

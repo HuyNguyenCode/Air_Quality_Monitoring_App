@@ -1,12 +1,11 @@
 package com.example.air_quality_monitoring_app;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +13,13 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class CustomeArrayAdapter extends ArrayAdapter<AlertItem> {
-    Activity context;
-    int idLayout;
-    ArrayList<AlertItem> arrAlert;
+public class CustomeArrayAdapter extends ArrayAdapter<AlertItem>  {
+    private Activity context;
+    private int idLayout;
+    private ArrayList<AlertItem> arrAlert;
+
+    public AdapterView.OnItemClickListener listener;
+
 
     public CustomeArrayAdapter( Activity context, int idLayout, ArrayList<AlertItem> arrAlert) {
         super(context, idLayout, arrAlert);
@@ -40,4 +42,11 @@ public class CustomeArrayAdapter extends ArrayAdapter<AlertItem> {
         alertTime.setText(alertItem.getAlertTime());
         return convertView;
     }
+
+
+    @Override
+    public AlertItem getItem(int position) {
+        return arrAlert.get(position);
+    }
+
 }
