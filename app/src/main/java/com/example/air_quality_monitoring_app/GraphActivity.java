@@ -23,17 +23,10 @@ public class GraphActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityGraphBinding binding;
-
+    private TextView myText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
-
-        Intent secondIntent = getIntent();
-
-        String message = "Course is: " + secondIntent.getStringExtra("Selected");
-        TextView myText = (TextView) findViewById(R.id.textView2);
-        myText.setText(message);
-
     }
 }

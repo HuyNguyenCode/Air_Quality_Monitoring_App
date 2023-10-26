@@ -14,12 +14,9 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class CustomeArrayAdapter extends ArrayAdapter<AlertItem>  {
-    private Activity context;
-    private int idLayout;
-    private ArrayList<AlertItem> arrAlert;
-
-    public AdapterView.OnItemClickListener listener;
-
+    Activity context;
+    int idLayout;
+    ArrayList<AlertItem> arrAlert;
 
     public CustomeArrayAdapter( Activity context, int idLayout, ArrayList<AlertItem> arrAlert) {
         super(context, idLayout, arrAlert);
@@ -41,12 +38,6 @@ public class CustomeArrayAdapter extends ArrayAdapter<AlertItem>  {
         TextView alertTime = convertView.findViewById(R.id.alert_time);
         alertTime.setText(alertItem.getAlertTime());
         return convertView;
-    }
-
-
-    @Override
-    public AlertItem getItem(int position) {
-        return arrAlert.get(position);
     }
 
 }

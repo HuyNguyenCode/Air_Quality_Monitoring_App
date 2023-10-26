@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -30,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
 
     Dialog alertDialog;
-    String alertTitle[] = {"High temperature alert", "High humidity alert","High PM2.5 alert", "High CO2 alert" };
+    String alertTitle[] = {"High Temperature alert", "High Humidity alert","High PM2.5 alert", "High CO2 alert" };
     String alertTime[] = {"19 sec ago ", "20 sec ago","22 sec ago", "50 sec ago" };
 
     ArrayList<AlertItem> listNoti;
@@ -87,21 +85,76 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long
                     id) {
-                Intent myintent = new Intent(HomeActivity.this,GraphActivity.class);
-                myintent.putExtra("name",alertTitle[position]);
-                startActivity(myintent);
+//                Intent myintent = new Intent(HomeActivity.this,GraphActivity.class);
+//                myintent.putExtra("name",alertTitle[position]);
+//                startActivity(myintent);
+                AlertItem alertItem = listNoti.get(position);
+                showPopup(alertItem);
             }
         });
 
     }
 //    @Override
-    public void showPopup(View view) {
+    public void showPopup(AlertItem alertItem) {
         alertDialog = new Dialog(this);
         alertDialog.setContentView(R.layout.popup_alert_modal);
+//        int actionImg[];
+        ArrayList <Integer> actionImg;
+        actionImg = new ArrayList<Integer>();
 
-        int actionImg[] = {R.drawable.turnonafan, R.drawable.openawindow, R.drawable.turndownthethermostat};
-        String actionTitle[] = {"Turn on a fan", "Open a window", "Turn off the AC" };
-        String actionDes[] = {"The fan on to decrease the room temp", "Open windows to let air circulate","The AC off to increase the room temp"};
+        ArrayList <String> actionTitle;
+        actionTitle = new ArrayList<String>();
+
+        ArrayList <String> actionDes;
+        actionDes = new ArrayList<String>();
+
+        if (alertItem.getAlertTitle().contains("Temperature")) {
+            actionImg.add(R.drawable.turnonafan);
+            actionImg.add(R.drawable.openawindow);
+            actionImg.add(R.drawable.turndownthethermostat);
+
+            actionTitle.add("Turn on a fan");
+            actionTitle.add("Open a window");
+            actionTitle.add("Turn off the AC");
+
+            actionDes.add("The fan on to decrease the room temp");
+            actionDes.add("Open windows to let air circulate");
+            actionDes.add("The AC off to increase the room temp");
+
+        } else if (alertItem.getAlertTitle().contains("Humidity")) {
+            actionImg.add(R.drawable.identifythesourceofthehumidity);
+            actionImg.add(R.drawable.preventmoldgrowth);
+            actionImg.add(R.drawable.reducethehumidityintheair);
+
+            actionTitle.add("Identify the source of the humidity");
+            actionTitle.add("Reduce the humidity in the air");
+            actionTitle.add("Prevent mold growth");
+
+            actionDes.add("Once you know the source, you can take steps to address it");
+            actionDes.add("using a dehumidifier, running a fan to let in fresh air");
+            actionDes.add("Cleaning up spills, leaks and keeping surfaces dry");
+        } else if (alertItem.getAlertTitle().contains("CO2")) {
+            actionImg.add(R.drawable.openawindow);
+            actionImg.add(R.drawable.checkgasappliances);
+
+            actionTitle.add("Open windows and doors");
+            actionTitle.add("Check gas appliances");
+
+            actionDes.add("Open windows and doors to ventilate the area");
+            actionDes.add("Turn off any gas appliances that may be producing CO2");
+        } else {
+            actionImg.add(R.drawable.avoidstrenuousactivity);
+            actionImg.add(R.drawable.wearamask);
+            actionImg.add(R.drawable.useairpurifier);
+
+            actionTitle.add("Avoid strenuous activity");
+            actionTitle.add("Wear a mask if you must go outside");
+            actionTitle.add("Use an air purifier");
+
+            actionDes.add("Strenuous activity can increase your breathing rate and draw more PM2.5 particles into your lungs");
+            actionDes.add("Wear a mask to limit pm2.5 dust from entering your body");
+            actionDes.add("Air purifier can help to remove PM2.5 particles");
+        }
 
         ArrayList<ActionItem> listAct;
         CustomeActionArrayAdapter myActionArrayAdapter;
@@ -110,11 +163,11 @@ public class HomeActivity extends AppCompatActivity {
         lvAction = (ListView) alertDialog.findViewById(R.id.list_recommended_action);
 
         TextView alertPopupTitle= alertDialog.findViewById(R.id.alert_popup_title);
-//        alertPopupTitle.setText(view.getId(alert_title));
+        alertPopupTitle.setText(alertItem.getAlertTitle());
 
         listAct = new ArrayList<>();
-        for (int i = 0; i < actionTitle.length; i++) {
-            listAct.add(new ActionItem(actionTitle[i], actionDes[i], actionImg[i]));
+        for (int i = 0; i < actionTitle.size(); i++) {
+            listAct.add(new ActionItem(actionTitle.get(i), actionDes.get(i), actionImg.get(i)));
         }
 
         myActionArrayAdapter = new CustomeActionArrayAdapter (
