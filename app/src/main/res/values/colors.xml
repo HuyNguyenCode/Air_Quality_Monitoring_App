@@ -12,4 +12,8 @@
     <color name="lavender">#8692f7</color>
     <color name="heading_text_color">#322153</color>
     <color name="bgBottomNavigation">#fe485a</color>
+    <color name="main">#202442</color>
+    <color name="main_light">#353A61</color>
+    <color name="main_green">#3CD27D</color>
+    <color name="main_full_light">#62678C</color>
 </resources>
