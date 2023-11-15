@@ -14,7 +14,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="130dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="#03A9F4"
         android:textSize="32sp" />
 
@@ -25,7 +25,7 @@
         android:layout_below="@+id/signup_text"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Register an MyUIT account to start experiencing all features and benefit"
+        android:text="@string/register_introduction"
         android:textColor="@color/main_full_light"
         android:textSize="16sp" />
 
@@ -40,7 +40,7 @@
         android:drawableEnd="@drawable/baseline_alternate_email_24"
         android:drawablePadding="25dp"
         android:drawableTint="@color/main_green"
-        android:hint="Email address"
+        android:hint="@string/email"
         android:inputType="textWebEmailAddress"
         android:paddingStart="25dp"
         android:paddingEnd="20dp"
@@ -56,7 +56,7 @@
         android:background="@drawable/bg_email_address"
         android:drawableEnd="@drawable/baseline_lock_24"
         android:drawableTint="@color/main_green"
-        android:hint="Create a Password"
+        android:hint="@string/create_password"
         android:inputType="textWebPassword"
         android:paddingStart="25dp"
         android:paddingEnd="20dp"
@@ -72,7 +72,7 @@
         android:background="@drawable/bg_email_address"
         android:drawableEnd="@drawable/baseline_lock_24"
         android:drawableTint="@color/main_green"
-        android:hint="Confirm your Password"
+        android:hint="@string/confirm_password"
         android:inputType="textWebPassword"
         android:paddingStart="25dp"
         android:paddingEnd="20dp"
@@ -86,7 +86,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:background="@drawable/btn_login_bg"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -100,7 +100,7 @@
         android:layout_below="@+id/btnSignup"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="OR"
+        android:text="@string/or"
         android:textColor="#38C374"
         android:textSize="18sp" />
 
@@ -114,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Already have an account?"
+            android:text="@string/already_have_account"
             android:textColor="@color/main_full_light"
             android:textSize="18sp" />
 
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:text="Login"
+            android:text="@string/login_btn"
             android:textColor="#03A9F4"
             android:textSize="18sp" />
     </LinearLayout>

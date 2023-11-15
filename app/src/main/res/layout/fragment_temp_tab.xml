@@ -63,7 +63,7 @@
                             android:id="@+id/weather_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Sunday | 10:08 AM"
+                            android:text="@string/time_weather"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
 
@@ -73,7 +73,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5sp"
                             android:layout_marginBottom="5sp"
-                            android:text="25°"
+                            android:text="@string/weather_temperature"
                             android:textColor="@color/white"
                             android:textSize="43sp"
                             android:textStyle="bold" />
@@ -82,7 +82,7 @@
                             android:id="@+id/weather_status"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Mostly Cloudy"
+                            android:text="@string/weather_status"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
                     </LinearLayout>
