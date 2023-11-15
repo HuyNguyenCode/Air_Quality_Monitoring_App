@@ -9,6 +9,7 @@
     tools:context=".HomeActivity"
     android:theme="@style/Theme.AppCompat.Light"
     >
+
     <!--Header-->
     <LinearLayout
         android:id="@+id/sticky_header"
@@ -230,11 +231,6 @@
 
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
         </LinearLayout>
-
-
     </RelativeLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,14 @@
 package com.example.air_quality_monitoring_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -13,6 +16,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.air_quality_monitoring_app.databinding.ActivityHomeBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -33,6 +39,12 @@ public class HomeActivity extends AppCompatActivity {
 
     ArrayList<AlertItem> listNoti;
     CustomeArrayAdapter myArrayAdapter;
+
+    ActivityHomeBinding binding;
+
+    private Fragment homeFragment;
+    private Fragment graphFragment;
+    private Fragment settingFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +105,51 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+//        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//        binding.bottomNav.setOnClickListener(item -> {
+//
+//        });
+
+//        homeFragment = new HomeFragment();
+        graphFragment = new GraphFragment();
+//        settingFragment = new SettingFragment();
+
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.navHomeBtn:
+//                        replaceFragment(homeFragment);
+//                        return true;
+//                    case R.id.navGraphBtn:
+//                        replaceFragment(graphFragment);
+//                        return true;
+//                    case R.id.navSettingBtn:
+//                        replaceFragment(settingFragment);
+//                        return true;
+//                    default:
+//                        return false;
+//                }
+//            }
+//
+//            @Override
+//            public boolean onItemSelected(MenuItem item) {
+//
+//            }
+//        });
+//
+//        private void replaceFragment(Fragment fragment) {
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.fragmentContainer, fragment)
+//                    .addToBackStack(null)
+//                    .commit();
+//        }
     }
+
+
 //    @Override
     public void showPopup(AlertItem alertItem) {
         alertDialog = new Dialog(this);
