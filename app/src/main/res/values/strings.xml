@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Air_Quality_Monitoring _App</string>
-    <string name="yellow">Yellow</string>
+    <string name="app_name">MyUIT Air</string>
+    <string name="yellow" translatable="false">Yellow</string>
     <string name="title_map">Map</string>
     <string name="title_list">List</string>
     <string name="title_chart">Chart</string>
     <string name="title_more">More</string>
     <string name="location">HOUSTON, TX</string>
-    <string name="avatar">avatar</string>
-    <string name="background">background</string>
+    <string name="avatar" translatable="false">avatar</string>
+    <string name="background" translatable="false">background</string>
     <string name="date">Sunday, Sep 19, 2023</string>
     <string name="title_co2">CO2</string>
     <string name="title_temp">Temp</string>
     <string name="title_humidity">Humidity</string>
     <string name="title_pm">PM2.5</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <string-array name="list_alert_title">
         <item>Good morning</item>
@@ -24,23 +24,23 @@
         <item>Good night</item>
         <item>Good bye</item>
     </string-array>
-    <string name="title_activity_graph">activity_graph</string>
+    <string name="title_activity_graph" translatable="false">activity_graph</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welcome to MyUIT Air!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-    <string name="lorem_ipsum">
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -76,4 +76,29 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="login_btn">Login</string>
+    <string name="login_google_btn">Login with Google</string>
+    <string name="or">OR</string>
+    <string name="create_account">Create your account</string>
+    <string name="app_introduction">MyUIT Air provides you many useful information to help you have a great day. Let\'s get started!</string>
+    <string name="register">Register</string>
+    <string name="register_introduction">Register an MyUIT account to start experiencing all features and benefit</string>
+    <string name="email">Email address</string>
+    <string name="create_password">Create a Password</string>
+    <string name="confirm_password">Confirm your Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="level">MODERATOR</string>
+    <string name="last_updated_time">3 MIN AGO</string>
+    <string name="time_weather">Sunday | 10:08 AM</string>
+    <string name="weather_temperature">25°</string>
+    <string name="weather_status">Mostly Cloudy</string>
+    <string name="last_updated_list">18sec ago</string>
+    <string name="air_quality_status">High Pollen Concentrations</string>
+    <string name="login">Login</string>
+    <string name="login_introduction">Login with your MyUIT account to start experiencing all features and benefit</string>
+    <string name="email_or_username">Email or username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="no_account">Don\'t have an account?</string>
 </resources>

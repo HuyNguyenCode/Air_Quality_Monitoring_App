@@ -6,11 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
 
+<!--    <ImageSwitcher-->
+<!--        android:id="@+id/imageSwitcher"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginEnd="50dp"/>-->
+
+    <Button
+        android:id="@+id/switchLangEnBtn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="EN"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/switchLangViBtn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/switchLangEnBtn"
+        android:text="VI"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp"/>
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/switchLangEnBtn"
         android:src="@drawable/weather"
         android:layout_centerHorizontal="true"/>
 
@@ -18,7 +46,7 @@
         android:id="@+id/welcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to MyUIT Air!"
+        android:text="@string/welcome"
         android:textStyle="bold"
         android:textSize="32sp"
         android:textColor="#ffc304"
@@ -32,7 +60,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
-        android:text="MyUIT Air provides you many useful information to help you have a great day. Let's get started!"
+        android:text="@string/app_introduction"
         android:textStyle="bold"
         android:textSize="16sp"
         android:textColor="#7C000000"
@@ -48,7 +76,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/btn_login_bg"
-        android:text="Create your account"
+        android:text="@string/create_account"
         android:textStyle="bold"
         app:backgroundTint="#38C374" />
 
@@ -73,7 +101,7 @@
         android:layout_below="@+id/btnSignup"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="OR"
+        android:text="@string/or"
         android:textColor="#03A9F4"
         android:textStyle="bold"
         android:textSize="18sp" />
@@ -86,7 +114,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/btn_login_bg"
-        android:text="Login"
+        android:text="@string/login_btn"
         android:textStyle="bold"
         app:backgroundTint="#03A9F4" />
 
@@ -98,7 +126,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_login_bg"
-        android:text="Login with Google"
+        android:text="@string/login_google_btn"
         android:textStyle="bold"
         app:backgroundTint="#03A9F4" />
 

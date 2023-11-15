@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/index_text"
             android:layout_centerInParent="true"
-            android:text="MODERATOR"
+            android:text="@string/level"
             android:textColor="@color/white"
             android:textSize="15dp"
             android:textStyle="bold">
@@ -68,7 +68,7 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/abeezee"
             android:paddingTop="20dp"
-            android:text="3 MIN AGO"
+            android:text="@string/last_updated_time"
             android:textColor="@color/white"
             android:textSize="12dp"
             android:textStyle="bold">
