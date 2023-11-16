@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.air_quality_monitoring_app.controller.AppController;
-import com.example.air_quality_monitoring_app.ui.login.LoginActivity;
 import com.google.android.material.button.MaterialButton;
 
 import com.example.air_quality_monitoring_app.api.ApiService;
@@ -38,8 +37,6 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signup);
         init();
 
@@ -98,7 +95,8 @@ public class SignupActivity extends AppCompatActivity {
         signupToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                startActivity(new Intent(SignupActivity.this,
+                        LoginActivity.class));
             }
         });
     }
