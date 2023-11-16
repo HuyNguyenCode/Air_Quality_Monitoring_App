@@ -14,23 +14,35 @@
 <!--        android:layout_marginTop="50dp"-->
 <!--        android:layout_marginEnd="50dp"/>-->
 
-    <Button
+    <TextView
         android:id="@+id/switchLangEnBtn"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:text="EN"
-        android:layout_marginEnd="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"/>
 
-    <Button
-        android:id="@+id/switchLangViBtn"
-        android:layout_width="70dp"
+    <TextView
+        android:id="@+id/textDivider"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toStartOf="@id/switchLangEnBtn"
+        android:text="|"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:id="@+id/switchLangViBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/textDivider"
         android:text="VI"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
         android:layout_marginTop="10dp"/>
 
     <pl.droidsonroids.gif.GifImageView
