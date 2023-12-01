@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <solid android:color="@color/ashGrey" />-->
+<!--    <corners android:radius="50dp" />-->
+
+<!--</shape>-->
+
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >-->
+<!--    <item android:drawable="@drawable/openawindow" >-->
+<!--        <corners android:radius="50dp"/>-->
+<!--    </item>-->
+<!--&lt;!&ndash;    <item>&ndash;&gt;-->
+<!--&lt;!&ndash;    <shape android:shape="rectangle" android:padding="10dp">&ndash;&gt;-->
+<!--&lt;!&ndash;        <corners android:radius="50dp"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    </shape>&ndash;&gt;-->
+<!--&lt;!&ndash;</item>&ndash;&gt;-->
+<!--</layer-list>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:drawable="@drawable/circle"/>
+    <item android:drawable="@drawable/openawindow"/>
+
+</layer-list>
