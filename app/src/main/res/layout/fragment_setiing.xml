@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="TabLayout.PMFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="MainFrameLayout.SettingFragment">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_pm"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="40dp" />
-
-
+        android:text="This is setting"
+        android:textSize="100dp"
+        android:gravity="center"/>
 
 </FrameLayout>

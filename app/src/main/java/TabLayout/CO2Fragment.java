@@ -1,4 +1,4 @@
-package com.example.air_quality_monitoring_app;
+package TabLayout;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.air_quality_monitoring_app.R;
 
 import java.util.ArrayList;
 

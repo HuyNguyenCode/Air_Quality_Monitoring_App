@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout 
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -59,111 +59,22 @@
                 app:layout_constraintStart_toStartOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:layout_constraintVertical_bias="0.333" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <!--Main dashboard-->
-    <LinearLayout
-        android:id="@+id/mainDashboard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/height_nav_bottom"
-        android:layout_marginTop="@dimen/height_header"
-        android:orientation="vertical"
-        android:weightSum="6"
-        app:flow_horizontalBias="0.0"
-        app:layout_constraintTop_toBottomOf="@id/sticky_header"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-
-        <!--Indicator-->
-        <RelativeLayout
-            android:id="@+id/indicator"
-            android:layout_weight="0"
+    <FrameLayout
+            android:id="@+id/mainFramelayout"
+            android:layout_marginBottom="@dimen/height_nav_bottom"
+            android:layout_marginTop="@dimen/height_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!--Background-->
-            <ImageView
-                android:contentDescription="@string/app_name"
-                android:id="@+id/background_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/viewpager"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/living_room_background"
-                android:scaleType="centerCrop" />
-
-            <!--Tab layout-->
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:alpha="0.9"
-                android:background="@drawable/tab_layout_customize"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingHorizontal="10dp"
-                app:itemTextColor="@android:color/white"
-                app:tabIndicator="@drawable/tab_indicator"
-                app:tabIndicatorColor="@color/white"
-                app:tabTextColor="@color/white">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_temp" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_humidity" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_co2" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_pm" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <!--View Pager-->
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_fragment"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="50dp">
-            </androidx.viewpager2.widget.ViewPager2>
-
-
-        </RelativeLayout>
-
-        <!--Alert notification listview-->
-        <ListView
-            android:layout_margin="15dp"
-            android:id="@+id/list_co2_alert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_weight="6"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="10sp"
-            android:fadingEdgeLength="5sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="395dp">
-        </ListView>
-
-    </LinearLayout>
-
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/sticky_header"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+            </FrameLayout>
 
     <!--Navgitaion bottom button-->
     <RelativeLayout
@@ -233,8 +144,5 @@
 
 
     </RelativeLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

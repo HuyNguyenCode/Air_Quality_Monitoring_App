@@ -1,4 +1,4 @@
-package com.example.air_quality_monitoring_app;
+package Authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.air_quality_monitoring_app.HomeActivity;
+import com.example.air_quality_monitoring_app.R;
 import com.example.air_quality_monitoring_app.api.ApiService;
 import com.example.air_quality_monitoring_app.api.Token;
 import com.example.air_quality_monitoring_app.controller.AppController;
@@ -37,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText userNameGet = findViewById(R.id.username);
                 EditText userPassGet = findViewById(R.id.password);
-
                 String userName = userNameGet.getText().toString();
                 String userPass = userPassGet.getText().toString();
 

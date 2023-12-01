@@ -1,4 +1,4 @@
-package com.example.air_quality_monitoring_app;
+package Authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.air_quality_monitoring_app.HomeActivity;
+import com.example.air_quality_monitoring_app.R;
 import com.example.air_quality_monitoring_app.controller.AppController;
 import com.google.android.material.button.MaterialButton;
 
@@ -19,6 +20,7 @@ import com.example.air_quality_monitoring_app.api.ApiService;
 import com.example.air_quality_monitoring_app.api.Token;
 import com.example.air_quality_monitoring_app.controller.UserController;
 import com.example.air_quality_monitoring_app.model.User;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -7,17 +7,15 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.app.ActionBar.LayoutParams;
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
-import android.widget.Button;
 
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Locale;
+
+import Authentication.LoginActivity;
+import Authentication.SignupActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
     String currentLanguage = Locale.getDefault().toString();

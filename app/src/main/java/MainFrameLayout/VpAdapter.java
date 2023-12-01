@@ -1,9 +1,14 @@
-package com.example.air_quality_monitoring_app;
+package MainFrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import TabLayout.CO2Fragment;
+import TabLayout.HumidityFragment;
+import TabLayout.PMFragment;
+import TabLayout.TempFragment;
 
 public class VpAdapter extends FragmentStateAdapter {
 

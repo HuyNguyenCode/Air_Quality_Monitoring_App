@@ -1,15 +1,17 @@
-package com.example.air_quality_monitoring_app;
+package MainFrameLayout;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.air_quality_monitoring_app.R;
+
 import java.util.ArrayList;
 
-public class HumidityFragment extends Fragment{
+public class SettingFragment extends Fragment{
 
 
     ArrayList<String> arrNoti;
@@ -19,6 +21,6 @@ public class HumidityFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_co2_tab, container, false);
+        return inflater.inflate(R.layout.fragment_setiing, container, false);
     }
 }

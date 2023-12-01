@@ -1,22 +1,29 @@
 package com.example.air_quality_monitoring_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
+import MainFrameLayout.GraphFragment;
+import MainFrameLayout.IndicatorFragment;
+import MainFrameLayout.SettingFragment;
+import MainFrameLayout.VpAdapter;
 
 public class HomeActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private VpAdapter vpAdapter;
+
+    private FloatingActionButton indicatorBtn, settingBtn, graphBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,49 +32,48 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        tabLayout = findViewById(R.id.tablayout);
-        viewPager = findViewById(R.id.viewpager);
+        indicatorBtn = findViewById(R.id.fab1);
+        graphBtn = findViewById(R.id.fab2);
+        settingBtn = findViewById(R.id.fab3);
 
+        indicatorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        vpAdapter = new VpAdapter(this);
-        viewPager.setAdapter(vpAdapter);
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            switch (position) {
-                case 0:
-                    tab.setText("Humidity");
-                    break;
-                case 1:
-                    tab.setText("PM2.5");
-                    break;
-                case 2:
-                    tab.setText("CO2");
-                    break;
-                case 3:
-                    tab.setText("Temp");
-                    break;
+                replaceFragment(new IndicatorFragment());
+
             }
-        }).attach();
-        
-        
-        //set-up listview
-        String alertTitle[] = {"High pollution alert", "High humidity alert","High temperature alert", "High CO2 alert" };
-        String alertTime[] = {"19 sec ago ", "20 sec ago","22 sec ago", "50 sec ago" };
+        });
 
-        ArrayList<AlertItem> listNoti;
-        CustomeArrayAdapter myArrayAdapter;
-        ListView lvNotificaiton;
+        graphBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        lvNotificaiton = (ListView) findViewById(R.id.list_co2_alert);
-        listNoti = new ArrayList<>();
-        for (int i = 0; i < alertTitle.length; i++) {
-            listNoti.add(new AlertItem(alertTitle[i], alertTime[i]));
-        }
+                replaceFragment(new GraphFragment());
 
-        myArrayAdapter = new CustomeArrayAdapter(
-                HomeActivity.this,
-                R.layout.list_alert_item,
-                listNoti
-        );
-        lvNotificaiton.setAdapter(myArrayAdapter);
+            }
+        });
+
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                replaceFragment(new SettingFragment());
+
+            }
+        });
+
+
+
+
+    }
+
+    private void replaceFragment(Fragment fragment) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.mainFramelayout,fragment);
+        fragmentTransaction.commit();
+
     }
 }

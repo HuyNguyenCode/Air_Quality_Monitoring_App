@@ -1,4 +1,4 @@
-package com.example.air_quality_monitoring_app;
+package MainFrameLayout;
 
 public class AlertItem {
     private String alertTitle;

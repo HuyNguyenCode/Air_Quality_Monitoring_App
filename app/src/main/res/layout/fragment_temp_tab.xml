@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:alpha="1"
-    tools:context=".TempFragment">
+    tools:context="TabLayout.TempFragment">
 
     <RelativeLayout
         android:id="@+id/indicator"

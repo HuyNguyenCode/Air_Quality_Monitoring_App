@@ -1,16 +1,16 @@
-package com.example.air_quality_monitoring_app;
+package MainFrameLayout;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.air_quality_monitoring_app.R;
 
 import java.util.ArrayList;
 

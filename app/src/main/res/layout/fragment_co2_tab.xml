@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:alpha="1"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CO2Fragment">
+    tools:context="TabLayout.CO2Fragment">
 
     <ImageView
         android:layout_width="match_parent"
