@@ -36,6 +36,8 @@
         <item name="android:minWidth">1dip</item>
         <item name="android:maxWidth">12dip</item>
     </style>
-
+    <style name="DialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorAccent">@color/black</item>
+    </style>
     <style name="Theme.Air_Quality_Monitoring_App" parent="Theme.MaterialComponents.Light" />
 </resources>
