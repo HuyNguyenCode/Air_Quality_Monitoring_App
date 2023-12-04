@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
 
-<!--    <ImageSwitcher-->
-<!--        android:id="@+id/imageSwitcher"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_marginEnd="50dp"/>-->
 
     <TextView
         android:id="@+id/switchLangEnBtn"
