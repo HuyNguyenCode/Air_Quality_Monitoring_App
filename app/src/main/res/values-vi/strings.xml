@@ -49,8 +49,11 @@
     <string name="forgot_password">Quên mật khẩu?</string>
     <string name="rspw">Đặt lại mật khẩu</string>
     <string name="no_account">Chưa có tài khoản?</string>
+<<<<<<< HEAD
     <string name="select">Chọn thuộc tính</string>
     <string name="save">Lưu</string>
     <string name="confirm_new_password">Nhập lại mật khẩu mới</string>
     <string name="back">Trở lại</string>
+=======
+>>>>>>> cb933be69c9d7b3e54c9bf5cf1bdb382684bc980
 </resources>
