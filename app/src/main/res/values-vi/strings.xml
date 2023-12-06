@@ -42,9 +42,15 @@
     <string name="weather_status">Nhiều mây</string>
     <string name="login">Đăng nhập</string>
     <string name="login_introduction">Đăng nhập vào tài khoản MyUIT để trải nghiệm hàng loạt tiện ích tuyệt vời</string>
+    <string name="rspw_introduction">Nhập email và mật khẩu của bạn để đặt lại mật khẩu</string>
     <string name="email_or_username">Email hoặc tên đăng nhập</string>
     <string name="password">Mật khẩu</string>
+    <string name="new_password">Nhập mật khẩu mới</string>
     <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="rspw">Đặt lại mật khẩu</string>
     <string name="no_account">Chưa có tài khoản?</string>
     <string name="select">Chọn thuộc tính</string>
+    <string name="save">Lưu</string>
+    <string name="confirm_new_password">Nhập lại mật khẩu mới</string>
+    <string name="back">Trở lại</string>
 </resources>

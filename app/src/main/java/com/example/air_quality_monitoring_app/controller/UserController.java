@@ -12,5 +12,6 @@ public class UserController {
         return instance;
     }
 
+    public String token;
 
 }

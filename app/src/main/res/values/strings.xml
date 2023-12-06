@@ -83,11 +83,17 @@
     <string name="create_account">Create your account</string>
     <string name="app_introduction">MyUIT Air provides you many useful information to help you have a great day. Let\'s get started!</string>
     <string name="register">Register</string>
+    <string name="rspw">Reset your password</string>
     <string name="register_introduction">Register an MyUIT account to start experiencing all features and benefit</string>
+    <string name="rspw_introduction">Enter your email and password to reset your password</string>
     <string name="email">Email address</string>
     <string name="create_password">Create a Password</string>
+    <string name="new_password">Enter new Password</string>
     <string name="confirm_password">Confirm your Password</string>
+    <string name="confirm_new_password">Confirm your new Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="save">Save</string>
+    <string name="back">Back</string>
     <string name="already_have_account">Already have an account?</string>
     <string name="level">MODERATOR</string>
     <string name="last_updated_time">3 MIN AGO</string>

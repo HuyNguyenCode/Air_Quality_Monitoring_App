@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Authentication.LoadingScreen">
+    <TextView
+        android:id="@+id/switchLangEnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="EN"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/switchLangEnBtn"
+        android:text="|"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:id="@+id/switchLangViBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/textDivider"
+        android:text="VI"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/switchLangEnBtn"
+        android:src="@drawable/weather"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/welcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:textColor="#ffc304"
+        android:layout_below="@id/gifImageView"
+        android:layout_centerHorizontal="true" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcomeTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14dp"
+        android:indeterminateTint="@color/primary" />
+</RelativeLayout>

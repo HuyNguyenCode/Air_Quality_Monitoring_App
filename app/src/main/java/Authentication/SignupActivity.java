@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,53 +45,34 @@ public class SignupActivity extends AppCompatActivity {
         init();
 
         Button signUpBtn = findViewById(R.id.btnSignup);
+        RelativeLayout signUpContent =findViewById(R.id.singup_content);
 
-//        SignupBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(SignupActivity.this, "Signup Successful.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        signUpContent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                appController.hideKeyboard(SignupActivity.this.getApplicationContext(), view);
+                return false;
+            }
+        });
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText edtEmail = findViewById(R.id.edt_email);
-                EditText edtPass = findViewById(R.id.edt_pass);
-                EditText edtCPass = findViewById(R.id.edt_cpass);
+                EditText userEamilGet = findViewById(R.id.edt_email);
+                EditText userPassGet = findViewById(R.id.edt_pass);
+                EditText userRePassGet = findViewById(R.id.edt_cpass);
 
-                inputMail = edtEmail.getText().toString();
-                inputPass = edtPass.getText().toString();
-                inputRePass = edtCPass.getText().toString();
+                inputMail = userEamilGet.getText().toString();
+                inputPass = userPassGet.getText().toString();
+                inputRePass = userRePassGet.getText().toString();
 
                 appController.checkRequiredFields(SignupActivity.this, inputMail, inputPass, inputRePass);
                 if (!appController.isNull) {
-                    ApiService.apiService.getToken("openremote", inputMail, inputPass, "password")
-                            .enqueue(new Callback<Token>() {
-                                @Override
-                                public void onResponse (Call<Token> call, Response<Token> response) {
-                                    Log.d("APIC CALL", "SUCCESS ");
-                                    Token token = response.body();
-                                    if (token == null) {
-                                        Log.d("APIC CALL", "null");
-                                        Toast.makeText(SignupActivity.this, "Invalid input! Please check again!", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Log.d("APIC CALL", token.getToken());
-                                        userController.user = new User(inputMail, inputPass);
-                                        Log.d("APIC CALL", userController.user.getUserEmail());
-                                        Toast.makeText(SignupActivity.this, "Signup success", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(SignupActivity.this, HomeActivity.class);
-                                        i.putExtra("usermail_store", inputMail);
-                                        i.putExtra("userpass_store", inputPass);
-                                        i.putExtra("userre_store", inputRePass);
-                                        startActivity(i);
-                                    }
-                                }
-                                @Override
-                                public void onFailure(Call<Token> call, Throwable t) {
-                                    Log.d("APIC CALL", "FAILED ");
-                                }
-                            });
+                    Intent i = new Intent(SignupActivity.this, WebViewConnect.class);
+                    i.putExtra("usermail_store", inputMail);
+                    i.putExtra("userpass_store", inputPass);
+                    i.putExtra("userre_store", inputRePass);
+                    startActivity(i);
                 }
             }
         });
@@ -111,9 +94,35 @@ public class SignupActivity extends AppCompatActivity {
         signupToLogin = (TextView) findViewById(R.id.signup_to_login);
     }
 
-//    public void onRestart(){
-//        super.onRestart();
-//
-//
-//    }
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        Log.d("onRestart()", "get into onRestart() : ");
+        ApiService.apiService.getToken("openremote", inputMail, inputPass, "password")
+                .enqueue(new Callback<Token>() {
+                    @Override
+                    public void onResponse (Call<Token> call, Response<Token> response) {
+                        Log.d("APIC CALL", "SUCCESS ");
+                        Log.d("Restart", "get into signup from fillform() : ");
+                        Token token = response.body();
+                        if (token == null) {
+                            Log.d("APIC CALL", "null");
+                            Toast.makeText(SignupActivity.this, "Invalid input! Please check again!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.d("APIC CALL", token.getToken());
+                            userController.user = new User(inputMail, inputPass);
+                            Log.d("APIC CALL", userController.user.getUserEmail());
+                            Toast.makeText(SignupActivity.this, "Signup success", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(SignupActivity.this, HomeActivity.class);
+                            startActivity(i);
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<Token> call, Throwable t) {
+                        Log.d("APIC CALL", "FAILED ");
+                    }
+                });
+
+    }
+
 }
