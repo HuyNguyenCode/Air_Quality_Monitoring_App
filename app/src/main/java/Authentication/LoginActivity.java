@@ -10,10 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.air_quality_monitoring_app.HomeActivity;
 import com.example.air_quality_monitoring_app.R;
 import com.example.air_quality_monitoring_app.api.ApiService;
 import com.example.air_quality_monitoring_app.api.Token;
+import com.example.air_quality_monitoring_app.api.UserAPI;
 import com.example.air_quality_monitoring_app.controller.AppController;
 import com.example.air_quality_monitoring_app.controller.UserController;
 import com.example.air_quality_monitoring_app.model.User;
@@ -28,12 +28,25 @@ public class LoginActivity extends AppCompatActivity {
     final UserController userController = UserController.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ApiService.apiService.getUser("Bearer "  + userController.token)
+                .enqueue(new Callback<UserAPI>() {
+                    @Override
+                    public void onResponse (Call<UserAPI> call, Response<UserAPI> response) {
+                        Log.d("APIC CALL", "SUCCESS ");
+                        UserAPI ua = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserAPI> call, Throwable t) {
+                        Log.d("APIC CALL", "FAILED ");
+                    }
+                });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         MaterialButton logInBtn = findViewById(R.id.btnLogin);
-
+        TextView resetText = findViewById(R.id.forgot_password);
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse (Call<Token> call, Response<Token> response) {
                                     Log.d("APIC CALL", "SUCCESS ");
-
+                                    Log.d("Debug", "Get into login activity from loading screen");
                                     Token token = response.body();
                                     if (token == null) {
                                         Log.d("APIC CALL", "null");
@@ -57,10 +70,9 @@ public class LoginActivity extends AppCompatActivity {
                                     } else {
                                         Log.d("APIC CALL", token.getToken());
                                         userController.user = new User(userName, userPass);
-//                            User user = new User(userName, userPass1, userMail);
                                         Log.d("APIC CALL", userController.user.getUserEmail());
                                         Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                                        Intent i = new Intent(LoginActivity.this, LoadingScreen.class);
                                         startActivity(i);
                                     }
                                 }
@@ -82,6 +94,14 @@ public class LoginActivity extends AppCompatActivity {
                         SignupActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        resetText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, ResetPassWordScreen.class);
+                startActivity(i);
             }
         });
 
