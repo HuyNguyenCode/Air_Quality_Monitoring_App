@@ -25,19 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-//        ImageSwitcher sw;
-//        sw = (ImageSwitcher) findViewById(R.id.imageSwitcher);
-//        sw.setFactory(new ViewSwitcher.ViewFactory() {
-//            @Override
-//            public View makeView() {
-//                ImageView myView = new ImageView(getApplicationContext());
-//                myView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-//                myView.setLayoutParams(new
-//                        ImageSwitcher.LayoutParams(LayoutParams.WRAP_CONTENT,
-//                        LayoutParams.WRAP_CONTENT));
-//                return myView;
-//            }
-//        });
+
 
         TextView langEnBtn = (TextView) findViewById(R.id.switchLangEnBtn);
         TextView langViBtn = (TextView) findViewById(R.id.switchLangViBtn);

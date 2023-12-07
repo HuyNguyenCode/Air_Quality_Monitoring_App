@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,6 +78,18 @@
                 android:textStyle="bold"
                 android:textSize="18dp"
                 android:text="Share Data with Trusted Contacts"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/btn_login_bg"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/Log_out"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:text="Logout"
                 android:padding="16dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_login_bg"
