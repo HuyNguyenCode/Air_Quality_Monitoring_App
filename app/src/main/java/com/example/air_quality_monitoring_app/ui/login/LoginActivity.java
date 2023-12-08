@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import com.google.android.material.button.MaterialButton;
 public class LoginActivity extends AppCompatActivity {
 
     EditText edtEmail, edtPass;
-    MaterialButton LoginBtn;
+    Button LoginBtn;
     TextView Login_to_Signup, Forgot_Password;
 
     @Override
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         init();
+        LoginBtn = findViewById(R.id.btnLogin);
 
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

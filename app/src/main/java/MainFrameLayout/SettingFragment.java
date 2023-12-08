@@ -10,9 +10,11 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import com.example.air_quality_monitoring_app.LanguageActivity;
+import com.example.air_quality_monitoring_app.LocaleHelper;
 import com.example.air_quality_monitoring_app.LogoutActivity;
 import com.example.air_quality_monitoring_app.R;
 import com.example.air_quality_monitoring_app.UserActivity;
+import com.example.air_quality_monitoring_app.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -60,8 +62,18 @@ public class SettingFragment extends Fragment {
         Intent intent = new Intent(getActivity(), LanguageActivity.class);
         startActivity(intent);
     }
+    private void updateLanguage(String languageCode) {
+        LocaleHelper.setLocale(getActivity(), languageCode);
+        getActivity().recreate();
+    }
     private void openLogoutActivity() {
-        Intent intent = new Intent(getActivity(), LogoutActivity.class);
+        // Đây là nơi bạn thực hiện các thao tác cần thiết để logout, ví dụ: xóa session, đặt lại trạng thái đăng nhập, v.v.
+
+        // Tạo Intent để quay lại màn hình đăng nhập (LoginActivity)
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        // Đặt cờ để xóa ngăn xếp của Activity và không cho phép người dùng quay lại màn hình trước đó
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
 }

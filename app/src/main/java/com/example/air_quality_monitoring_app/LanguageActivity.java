@@ -19,7 +19,7 @@ public class LanguageActivity extends AppCompatActivity {
 
     TextView langEnBtn;
     TextView langViBtn;
-    String currentLanguage = Locale.getDefault().toString();
+    String currentLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class LanguageActivity extends AppCompatActivity {
         langEnBtn = findViewById(R.id.switchLangEnBttn);
         langViBtn = findViewById(R.id.switchLangViBttn);
 
+        currentLanguage = Locale.getDefault().toString();
+        updateButtonColors();
 
         langEnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,10 +38,8 @@ public class LanguageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Changed app language to English",
                         Toast.LENGTH_LONG).show();
                 updateViews("en");
-                if(currentLanguage.equals("en")) {
-                    langViBtn.setTextColor(getResources().getColor(R.color.black));
-                    langEnBtn.setTextColor(getResources().getColor(R.color.black));
-                }
+                currentLanguage = "en";
+                updateButtonColors();
                 recreate();
             }
         });
@@ -50,34 +50,31 @@ public class LanguageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Đã thay đổi ngôn ngữ ứng dụng thành Tiếng Việt",
                         Toast.LENGTH_LONG).show();
                 updateViews("vi");
-                if(currentLanguage.equals("vi")) {
-                    langViBtn.setTextColor(getResources().getColor(R.color.black));
-                    langEnBtn.setTextColor(getResources().getColor(R.color.black));
-                }
+                currentLanguage = "vi";
+                updateButtonColors();
                 recreate();
             }
         });
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base));
     }
+
     private void updateViews(String languageCode) {
         Context context = LocaleHelper.setLocale(this, languageCode);
         Resources resources = context.getResources();
+    }
 
-        TextView welcomeTitle = findViewById(R.id.welcomeTitle);
-        TextView greetingText = findViewById(R.id.greetingText);
-        TextView orText = findViewById(R.id.or);
-        MaterialButton signupBtn = findViewById(R.id.btnSignup);
-        MaterialButton loginBtn = findViewById(R.id.btnLogin);
-        MaterialButton loginGoogleBtn = findViewById(R.id.btnLoginGoogle);
-
-        welcomeTitle.setText(resources.getString(R.string.welcome));
-        greetingText.setText(resources.getString(R.string.app_introduction));
-        orText.setText(resources.getString(R.string.or));
-        signupBtn.setText(resources.getString(R.string.create_account));
-        loginBtn.setText(resources.getString(R.string.login_btn));
-        loginGoogleBtn.setText(resources.getString(R.string.login_google_btn));
+    private void updateButtonColors() {
+        if (currentLanguage.equals("en")) {
+            langEnBtn.setTextColor(getResources().getColor(R.color.purple_700));
+            langViBtn.setTextColor(getResources().getColor(android.R.color.black));
+        } else if (currentLanguage.equals("vi")) {
+            langViBtn.setTextColor(getResources().getColor(R.color.purple_700));
+            langEnBtn.setTextColor(getResources().getColor(android.R.color.black));
+        }
     }
 }
+

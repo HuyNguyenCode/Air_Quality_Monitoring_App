@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+
 android {
     namespace = "com.example.air_quality_monitoring_app"
     compileSdk = 34

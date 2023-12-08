@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="setting">Cài đặt</string>
+    <string name="user">Người dùng</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="changepassword">Đổi mật khẩu</string>
+
     <string name="app_name">MyUIT Air</string>
     <string name="location">HÀ NỘI, VIỆT NAM</string>
     <string name="date">Chủ Nhật, 19 tháng 9, 2023</string>

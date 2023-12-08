@@ -73,7 +73,7 @@
         android:layout_below="@id/welcomeTitle"
         android:layout_centerHorizontal="true" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnSignup"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
@@ -85,19 +85,7 @@
         android:textStyle="bold"
         app:backgroundTint="#38C374" />
 
-<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/welcomeTitle"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:src="@drawable/baseline_navigate_next_24"-->
-<!--        android:text="Create your account"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="#F3FFE5"-->
-<!--        android:backgroundTint="#7db241"-->
-<!--        android:theme="@style/Theme.Material3.Light" />-->
+
 
     <TextView
         android:id="@+id/or"
@@ -111,7 +99,7 @@
         android:textStyle="bold"
         android:textSize="18sp" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnLogin"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
@@ -123,7 +111,7 @@
         android:textStyle="bold"
         app:backgroundTint="#03A9F4" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnLoginGoogle"
         android:layout_width="230dp"
         android:layout_height="wrap_content"

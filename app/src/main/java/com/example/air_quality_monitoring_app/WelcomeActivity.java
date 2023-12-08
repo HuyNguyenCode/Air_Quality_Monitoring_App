@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +68,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton btnSignup = findViewById(R.id.btnSignup);
+        Button btnSignup = findViewById(R.id.btnSignup);
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +78,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton btnLogin = findViewById(R.id.btnLogin);
+        Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,9 +101,9 @@ public class WelcomeActivity extends AppCompatActivity {
         TextView welcomeTitle = (TextView) findViewById(R.id.welcomeTitle);
         TextView greetingText = (TextView) findViewById(R.id.greetingText);
         TextView orText = (TextView) findViewById(R.id.or);
-        MaterialButton signupBtn = (MaterialButton) findViewById(R.id.btnSignup);
-        MaterialButton loginBtn = (MaterialButton) findViewById(R.id.btnLogin);
-        MaterialButton loginGoogleBtn = (MaterialButton) findViewById(R.id.btnLoginGoogle);
+        Button signupBtn = (Button) findViewById(R.id.btnSignup);
+        Button loginBtn = (Button) findViewById(R.id.btnLogin);
+        Button loginGoogleBtn = (Button) findViewById(R.id.btnLoginGoogle);
 
         welcomeTitle.setText(resources.getString(R.string.welcome));
         greetingText.setText(resources.getString(R.string.app_introduction));

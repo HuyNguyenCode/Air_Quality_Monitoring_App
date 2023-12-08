@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="setting">Setting</string>
+    <string name="user">User</string>
+    <string name="language">Language</string>
+    <string name="logout">Logout</string>
+    <string name="changepassword">Change Password</string>
+
+
     <string name="app_name">MyUIT Air</string>
     <string name="yellow" translatable="false">Yellow</string>
     <string name="title_map">Map</string>

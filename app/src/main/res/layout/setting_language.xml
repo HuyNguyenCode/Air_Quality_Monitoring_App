@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Languge"
+                android:text="@string/language"
                 android:textSize="35dp"
                 android:textColor="@color/black"
                 android:padding="16dp"
