@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,13 +40,30 @@ public class SignupActivity extends AppCompatActivity {
     String inputMail;
     String inputPass;
     String inputRePass;
+    CheckBox showPasswordCheckBox;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         init();
+        showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
 
+        // Lắng nghe sự kiện khi người dùng thay đổi trạng thái của CheckBox
+        showPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Nếu người dùng chọn CheckBox, hiển thị mật khẩu; ngược lại, ẩn mật khẩu
+                if (isChecked) {
+                    edtPass.setInputType(InputType.TYPE_CLASS_TEXT);
+                    edtCPass.setInputType(InputType.TYPE_CLASS_TEXT);
+                } else {
+                    edtPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    edtCPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
         Button signUpBtn = findViewById(R.id.btnSignup);
         RelativeLayout signUpContent =findViewById(R.id.singup_content);
 

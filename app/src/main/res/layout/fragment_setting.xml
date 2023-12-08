@@ -55,33 +55,7 @@
                 android:background="@drawable/btn_login_bg"
                 />
 
-            <!-- Phần Thêm thiết bị mới bằng mã QR -->
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/add_device"
-                android:layout_weight="1"
-                android:text="Add New Device QR"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:padding="16dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/btn_login_bg"
-                />
 
-            <!-- Phần Chia sẻ dữ liệu với những người liên hệ đáng tin cậy -->
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/share_data"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:text="Share Data with Trusted Contacts"
-                android:padding="16dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/btn_login_bg"
-                />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

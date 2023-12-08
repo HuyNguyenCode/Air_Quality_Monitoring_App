@@ -5,6 +5,7 @@
     <string name="language">Ngôn ngữ</string>
     <string name="logout">Đăng xuất</string>
     <string name="changepassword">Đổi mật khẩu</string>
+    <string name="show_password">Hiện mật khẩu</string>
 
     <string name="app_name">MyUIT Air</string>
     <string name="location">HÀ NỘI, VIỆT NAM</string>

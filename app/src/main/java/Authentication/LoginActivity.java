@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +47,20 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        CheckBox showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
+        EditText passwordEditText = findViewById(R.id.password);
+
+        showPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Nếu người dùng chọn Checkbox, hiển thị mật khẩu; ngược lại ẩn mật khẩu
+                if (isChecked) {
+                    passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                } else {
+                    passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
 
         MaterialButton logInBtn = findViewById(R.id.btnLogin);
         TextView resetText = findViewById(R.id.forgot_password);

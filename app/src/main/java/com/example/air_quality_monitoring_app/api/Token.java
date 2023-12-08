@@ -2,7 +2,7 @@ package com.example.air_quality_monitoring_app.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Token {
+public class    Token {
     @SerializedName("access_token")
     private String token;
 

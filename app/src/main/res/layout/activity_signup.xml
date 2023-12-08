@@ -46,6 +46,13 @@
         android:paddingStart="25dp"
         android:paddingEnd="20dp"
         android:textColorHint="@color/main_full_light" />
+    <CheckBox
+        android:id="@+id/show_password_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_password"
+        android:layout_below="@+id/edt_cpass"
+        android:layout_alignStart="@+id/edt_cpass" />
 
     <EditText
         android:id="@+id/edt_pass"

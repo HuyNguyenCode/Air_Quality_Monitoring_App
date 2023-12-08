@@ -5,6 +5,7 @@
     <string name="language">Language</string>
     <string name="logout">Logout</string>
     <string name="changepassword">Change Password</string>
+    <string name="show_password">Show Password</string>
 
 
     <string name="app_name">MyUIT Air</string>
