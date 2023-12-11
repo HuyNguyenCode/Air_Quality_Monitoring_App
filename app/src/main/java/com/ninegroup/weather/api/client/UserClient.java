@@ -1,0 +1,42 @@
+package com.ninegroup.weather.api.client;
+
+import android.util.Log;
+
+import com.ninegroup.weather.api.ApiService;
+import com.ninegroup.weather.api.User;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class UserClient {
+    private final String accessToken = TokenClient.accessToken;
+    private final ApiService apiService = ApiClient.getClient(accessToken).create(ApiService.class);
+    private User user;
+
+    public void getUser() {
+        apiService.getUser(accessToken).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()) {
+                    user = response.body();
+                    if (user != null) {
+                        Log.d("USER API CALL", user.username);
+                        Log.d("USER API CALL", user.firstName);
+                        Log.d("USER API CALL", user.lastName);
+//                        Gson gson = new Gson();
+//                        String json = gson.toJson(asset.attributes);
+//                        handleAssetResponse(json);
+                    }
+                } else {
+                    Log.d("USER API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.d("TOKEN API CALL", t.getMessage().toString());
+            }
+        });
+    }
+}

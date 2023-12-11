@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">WeatherNow</string>
+    <string name="home">Home</string>
+    <string name="monitoring">Monitoring</string>
+    <string name="map">Map</string>
+    <string name="settings">Settings</string>
+    <string name="current_language">English</string>
+    <string name="app_introduction">A simple app which provides you useful weather information</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="or">or</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="back">Back</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="reset_password">Reset your password</string>
+    <string name="reset">Reset</string>
+</resources>
