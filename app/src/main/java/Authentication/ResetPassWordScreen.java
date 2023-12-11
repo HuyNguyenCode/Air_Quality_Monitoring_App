@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.text.InputType;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -70,6 +73,30 @@ public class ResetPassWordScreen extends AppCompatActivity {
                 oldPass = passwordET.getText().toString();
                 newPass = newPasswordET.getText().toString();
                 reNewPass = reNewPasswordET.getText().toString();
+
+
+                CheckBox showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
+                EditText passwordEditText = findViewById(R.id.edt_pass);
+                EditText newPasswordEditText = findViewById(R.id.edt_newpass);
+                EditText confirmEditText = findViewById(R.id.edt_cpass);
+
+                showPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        // Nếu người dùng chọn CheckBox, hiển thị mật khẩu; ngược lại, ẩn mật khẩu
+                        if (isChecked) {
+                            passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                            newPasswordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                            confirmEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                        } else {
+                            passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            newPasswordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            confirmEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        }
+                    }
+                });
+
+
 
                 appController.checkRequiredFields(ResetPassWordScreen.this, userName, oldPass, reNewPass, newPass);
                 if (oldPass.equals(newPass)) {
