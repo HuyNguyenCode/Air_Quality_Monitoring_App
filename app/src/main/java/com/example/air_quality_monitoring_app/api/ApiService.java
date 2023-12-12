@@ -48,8 +48,8 @@ public interface ApiService {
     @GET("https://uiot.ixxc.dev/api/master/user/user")
     Call<UserAPI>  getUser(@Header ("Authorization") String token);
 
-    @PUT("https://uiot.ixxc.dev/api/master/user/{realm}/reset-password/{id}")
-    Call<UserAPI> resetPassword(@Header ("Authorization") String token, @Path("realm") String realm, @Path("id") String id, @Body Param param);
+    @PUT("https://uiot.ixxc.dev/api/master/user/{realm}/reset-password/{userId}")
+    Call<UserAPI> resetPassword(@Header ("Authorization") String token,@Path("realm") String realm, @Path("userId") String id,@Body Param param);
 
     @FormUrlEncoded
     @POST("auth/realms/master/protocol/openid-connect/token")
@@ -58,11 +58,4 @@ public interface ApiService {
                          @Field("password") String password,
                          @Field("grant_type") String grant_type
     );
-
-
-//    @GET("https://uiot.ixxc.dev/api/master/asset/datapoint/export?attributeRefs=%5B%7B%22id%22%3A%225zI6XqkQVSfdgOrZ1MyWEf%22%2C%22name%22%3A%22temperature%22%7D%5D/{fromTimestamp}/{toTimestamp}")
-//    Call<UserAPI>  getUser(@Header ("Authorization") String token);
-
-
-
 }
