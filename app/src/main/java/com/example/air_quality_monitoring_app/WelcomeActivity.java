@@ -37,7 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
             langEnBtn.setTextColor(getResources().getColor(R.color.ashGrey));
             langChBtn.setTextColor(getResources().getColor(R.color.ashGrey));
         }
-        else if(currentLanguage.equals("en")) {
+        else if(currentLanguage.equals("en  ")) {
             langEnBtn.setTextColor(getResources().getColor(R.color.purple_700));
             langViBtn.setTextColor(getResources().getColor(R.color.ashGrey));
             langChBtn.setTextColor(getResources().getColor(R.color.ashGrey));
