@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class GraphFragment extends Fragment{
+public class GraphFragment extends Fragment {
 
     ArrayList<String> arrNoti;
 
@@ -41,37 +41,61 @@ public class GraphFragment extends Fragment{
     String[] items = {"Temperature", "Humidity", "CO2", "PM2.5"};
     ArrayAdapter<String> adapterAttrItems;
     ArrayAdapter<String> adapterTfItems;
-    AutoCompleteTextView autoAttrCompleteTxt, autoTfCompleteTxt;
-    TextInputLayout inputDateTxt;
+
+    ArrayAdapter<String> adapterDateItems;
+    AutoCompleteTextView autoAttrCompleteTxt, autoTfCompleteTxt, autoDateCompleteTxt;
+//    TextInputLayout inputDateTxt;
     TextView textViewDate;
 
     String[] atrrItems = {"Temperature", "Humidity", "CO2", "PM2.5"};
     String[] tfItems = {"Day", "Week", "Month"};
+//    String[] dateItem = {};
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frgament_graph, container, false);
+        autoDateCompleteTxt = view.findViewById(R.id.auto_complete_date);
+        autoDateCompleteTxt.setOnClickListener(new View.OnClickListener() {
+            String datePicked = "";
+            String timePicked = "";
 
-
-        inputDateTxt = view.findViewById(R.id.input_date_txt);
-        textViewDate = view.findViewById(R.id.text_view_date);
-        inputDateTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                openDatePicker(); // Open date picker dialog
+                final Calendar calendar = Calendar.getInstance();
 
-//                openTimePicker(); //Open time picker dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                        // Save the picked time
+                        timePicked = String.format("%02d:%02d", hour, minute);
+
+                        // Show the date picker now
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                String chosenDate = String.format("%02d/%02d/%d", day, month + 1, year);
+                                datePicked = chosenDate;
+                                // Set the combined date and time
+                                autoDateCompleteTxt.setText(datePicked + " " + timePicked);
+                            }
+                        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                        datePickerDialog.show();
+                    }
+                }, 15, 30, false);
+                timePickerDialog.show();
             }
         });
 
-
         autoAttrCompleteTxt = view.findViewById(R.id.auto_complete_attr);
-        autoTfCompleteTxt = view.findViewById(R.id.auto_complete_tf);
-
         adapterAttrItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,atrrItems);
         autoAttrCompleteTxt.setAdapter(adapterAttrItems);
+
+        autoTfCompleteTxt = view.findViewById(R.id.auto_complete_tf);
         adapterTfItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,tfItems);
         autoTfCompleteTxt.setAdapter(adapterTfItems);
 
@@ -117,33 +141,5 @@ public class GraphFragment extends Fragment{
         lineChart.invalidate();
         return view;
     }
-
-    private void openDatePicker(){
-        final Calendar calendar = Calendar.getInstance();
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), R.style.DialogTheme , new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                //Showing the picked value in the textView
-//                autoCompleteTVDate.setText(String.valueOf(year)+ "."+String.valueOf(month)+ "."+String.valueOf(day));
-                textViewDate.setText(String.format("%d/%02d/%02d", year, month + 1, day));
-            }
-//        }, 2023, 01, 20);
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-    }
-
-
-    private void openTimePicker(){
-
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                //Showing the picked value in the textView
-                textViewDate.setText(String.valueOf(hour)+ ":"+String.valueOf(minute));
-            }
-        }, 15, 30, false);
-
-        timePickerDialog.show();
-    }
 }
+
