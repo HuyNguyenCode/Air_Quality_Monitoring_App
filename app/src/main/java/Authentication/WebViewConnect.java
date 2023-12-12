@@ -233,7 +233,6 @@ public class WebViewConnect extends AppCompatActivity {
         String rePwdScript = "document.getElementById('password-confirm').value='" + userPass2  + "';";
         String submit = "document.querySelector('button[name=\"register\"]').click()";
 
-
         view.evaluateJavascript(usrScript,null);
         view.evaluateJavascript(emailScript,null);
         view.evaluateJavascript(pwdScript,null);

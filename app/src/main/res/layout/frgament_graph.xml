@@ -9,29 +9,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         android:orientation="vertical">
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/attrSelect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
+            android:layout_margin="16dp"
+            android:hint="@string/select_attr"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complete_attr"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/select"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="5dp"
-                />
-            <Spinner
-                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:id="@+id/spinnerAttr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="10dp"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,53 +34,65 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:orientation="vertical">
-                <TextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tfSelect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Timeframe"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="5dp"
-                    />
-                <Spinner
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:id="@+id/spinnerTF"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_margin="16dp"
+                    android:hint="@string/select_tf"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_complete_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
                >
-                <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select Ending date"/>
+<!--                <Button-->
+<!--                android:id="@+id/button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Select Ending date"/>-->
 
-                <TextView
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="5dp"
-                    android:id="@+id/text"
-                    android:text="Ending date"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:id="@+id/input_date_txt"
+                        android:hint="@string/select_date"
+                        android:clickable="true"
+                        android:focusable="false"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:id="@+id/text_view_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:focusable="false" />
+                </LinearLayout>
             </LinearLayout>
-
-
         </LinearLayout>
         <Button
             android:id="@+id/showbtn"
@@ -95,6 +100,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show"/>
+
+
     </LinearLayout>
 
 

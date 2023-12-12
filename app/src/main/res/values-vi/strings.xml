@@ -53,4 +53,7 @@
     <string name="password">Mật khẩu</string>
     <string name="forgot_password">Quên mật khẩu?</string>
     <string name="no_account">Chưa có tài khoản?</string>
+    <string name="select_tf">Khung thời gian</string>
+    <string name="select_attr">Chọn thuộc tính</string>
+    <string name="select_date">Chọn ngày</string>
 </resources>

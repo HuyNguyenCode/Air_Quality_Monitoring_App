@@ -22,7 +22,9 @@
     <string name="title_temp">Temp</string>
     <string name="title_humidity">Humidity</string>
     <string name="title_pm">PM2.5</string>
-    <string name="select">Select Attribute</string>
+    <string name="select_attr">Select Attribute</string>
+    <string name="select_tf">Timeframe</string>
+    <string name="select_date">Ending</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -24,9 +25,12 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.Entry;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class GraphFragment extends Fragment{
@@ -35,41 +39,55 @@ public class GraphFragment extends Fragment{
 
     private LineChart lineChart;
     String[] items = {"Temperature", "Humidity", "CO2", "PM2.5"};
-    AutoCompleteTextView autoCompleteTextView;
-    ArrayAdapter<String> adapterItems;
+    ArrayAdapter<String> adapterAttrItems;
+    ArrayAdapter<String> adapterTfItems;
+    AutoCompleteTextView autoAttrCompleteTxt, autoTfCompleteTxt;
+    TextInputLayout inputDateTxt;
+    TextView textViewDate;
 
-    AutoCompleteTextView autoCompleteTxt;
-
-    private Spinner spinnerSelectAttr, spinnerSelectTF;
-    private TextView textView;
-    private Button button;
+    String[] atrrItems = {"Temperature", "Humidity", "CO2", "PM2.5"};
+    String[] tfItems = {"Day", "Week", "Month"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frgament_graph, container, false);
 
-        spinnerSelectAttr = view.findViewById(R.id.spinnerAttr);
-        String[] attrs = {"Temperature", "Humidity", "CO2", "PM2.5"};
-        ArrayAdapter adapterAttr = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, attrs);
-        adapterAttr.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSelectAttr.setAdapter(adapterAttr);
 
-        spinnerSelectTF = view.findViewById(R.id.spinnerTF);
-        String[] tf = {"Day", "Week", "Month"};
-        ArrayAdapter adapterTF = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, tf);
-        adapterTF.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSelectTF.setAdapter(adapterTF);
-
-        button = view.findViewById(R.id.button);
-        textView = view.findViewById(R.id.text);
-        button.setOnClickListener(new View.OnClickListener() {
+        inputDateTxt = view.findViewById(R.id.input_date_txt);
+        textViewDate = view.findViewById(R.id.text_view_date);
+        inputDateTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 openDatePicker(); // Open date picker dialog
 
-                openTimePicker(); //Open time picker dialog
+//                openTimePicker(); //Open time picker dialog
+            }
+        });
+
+
+        autoAttrCompleteTxt = view.findViewById(R.id.auto_complete_attr);
+        autoTfCompleteTxt = view.findViewById(R.id.auto_complete_tf);
+
+        adapterAttrItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,atrrItems);
+        autoAttrCompleteTxt.setAdapter(adapterAttrItems);
+        adapterTfItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,tfItems);
+        autoTfCompleteTxt.setAdapter(adapterTfItems);
+
+        autoAttrCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getActivity().getApplicationContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        autoTfCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getActivity().getApplicationContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -101,17 +119,18 @@ public class GraphFragment extends Fragment{
     }
 
     private void openDatePicker(){
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.DialogTheme , new DatePickerDialog.OnDateSetListener() {
+        final Calendar calendar = Calendar.getInstance();
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), R.style.DialogTheme , new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-
                 //Showing the picked value in the textView
-                textView.setText(String.valueOf(year)+ "."+String.valueOf(month)+ "."+String.valueOf(day));
-
+//                autoCompleteTVDate.setText(String.valueOf(year)+ "."+String.valueOf(month)+ "."+String.valueOf(day));
+                textViewDate.setText(String.format("%d/%02d/%02d", year, month + 1, day));
             }
-        }, 2023, 01, 20);
+//        }, 2023, 01, 20);
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
-        datePickerDialog.show();
     }
 
 
@@ -121,7 +140,7 @@ public class GraphFragment extends Fragment{
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 //Showing the picked value in the textView
-                textView.setText(String.valueOf(hour)+ ":"+String.valueOf(minute));
+                textViewDate.setText(String.valueOf(hour)+ ":"+String.valueOf(minute));
             }
         }, 15, 30, false);
 
