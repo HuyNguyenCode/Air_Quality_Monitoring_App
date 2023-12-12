@@ -21,21 +21,21 @@ public class UserClient {
                 if (response.isSuccessful()) {
                     user = response.body();
                     if (user != null) {
-                        Log.d("USER API CALL", user.username);
-                        Log.d("USER API CALL", user.firstName);
-                        Log.d("USER API CALL", user.lastName);
+                        Log.i("USER API CALL", user.username);
+                        Log.i("USER API CALL", user.firstName);
+                        Log.i("USER API CALL", user.lastName);
 //                        Gson gson = new Gson();
 //                        String json = gson.toJson(asset.attributes);
 //                        handleAssetResponse(json);
                     }
                 } else {
-                    Log.d("USER API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    Log.e("USER API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.d("TOKEN API CALL", t.getMessage().toString());
+                Log.e("TOKEN API CALL", t.getMessage().toString());
             }
         });
     }

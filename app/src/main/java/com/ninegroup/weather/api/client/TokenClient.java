@@ -13,7 +13,7 @@ public class TokenClient {
     private ApiService apiService = ApiClient.getClientNoToken().create(ApiService.class);
     private Token token;
     public static String accessToken = null;
-    public static Boolean isRunning = true;
+    public static Boolean isTokenRunning = true;
 
     public void getToken(String username, String password) {
         apiService.getToken("openremote", username, password, "password")
@@ -23,21 +23,21 @@ public class TokenClient {
                 if (response.isSuccessful()) {
                     token = response.body();
                     if (token != null) {
-                        Log.d("TOKEN API CALL", token.getAccessToken());
-                        Log.d("TOKEN API CALL", token.getTokenType());
+                        Log.i("TOKEN API CALL", token.getAccessToken());
+                        Log.i("TOKEN API CALL", token.getTokenType());
                         accessToken = token.getAccessToken();
-                        isRunning = false;
+                        isTokenRunning = false;
                     }
                 } else {
-                    Log.d("TOKEN API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
-                    isRunning = false;
+                    Log.e("TOKEN API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    isTokenRunning = false;
                 }
             }
 
             @Override
             public void onFailure(Call<Token> call, Throwable t) {
-                Log.d("TOKEN API CALL", t.getMessage().toString());
-                isRunning = false;
+                Log.e("TOKEN API CALL", t.getMessage().toString());
+                isTokenRunning = false;
             }
         });
     }

@@ -12,7 +12,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ninegroup.weather.api.DatapointRequest;
 import com.ninegroup.weather.api.client.AssetClient;
+import com.ninegroup.weather.api.client.DatapointClient;
 import com.ninegroup.weather.api.client.TokenClient;
 import com.ninegroup.weather.databinding.ActivityMainBinding;
 
@@ -34,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         else {
             AssetClient assetClient = new AssetClient();
             assetClient.getAsset();
+
+            DatapointRequest datapointRequest = new DatapointRequest(
+                    "lttb", "1702224000000", "1702310400000", 100);
+            DatapointClient datapointClient = new DatapointClient();
+            datapointClient.getDatapoint("temperature", datapointRequest);
 
             NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
             NavController navController = navHostFragment.getNavController();

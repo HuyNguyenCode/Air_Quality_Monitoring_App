@@ -1,6 +1,9 @@
 package com.ninegroup.weather.api;
 
+import java.util.List;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -26,4 +29,9 @@ public interface ApiService {
                          @Field("password") String password,
                          @Field("grant_type") String grant_type
     );
+
+    @POST("api/master/asset/datapoint/{assetId}/attribute/{attributeName}")
+    Call<List<Datapoint>> getDatapoint(@Path("assetId") String assetId,
+                                       @Path("attributeName") String attributeName,
+                                       @Body DatapointRequest body);
 }

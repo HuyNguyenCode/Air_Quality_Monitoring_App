@@ -15,15 +15,16 @@ public class AssetClient {
     private final String accessToken = TokenClient.accessToken;
     private final ApiService apiService = ApiClient.getClient(accessToken).create(ApiService.class);
     private Asset asset;
-    static public String rainfall;
-    static public String manufacturer;
-    static public String uvIndex;
-    static public String temperature;
-    static public String humidity;
-    static public String location;
-    static public String place;
-    static public String windDirection;
-    static public String windSpeed;
+    public static String rainfall;
+    public static String manufacturer;
+    public static String uvIndex;
+    public static String temperature;
+    public static String humidity;
+    public static String location;
+    public static String place;
+    public static String windDirection;
+    public static String windSpeed;
+    public static Boolean isAssetRunning = true;
 
     public void getAsset() {
         apiService.getAsset("5zI6XqkQVSfdgOrZ1MyWEf").enqueue(new Callback<Asset>() {
@@ -32,20 +33,23 @@ public class AssetClient {
                 if (response.isSuccessful()) {
                     asset = response.body();
                     if (asset != null) {
-                        Log.d("ASSET API CALL", asset.type);
-                        Log.d("ASSET API CALL", asset.attributes.toString());
+                        Log.i("ASSET API CALL", asset.type);
+                        Log.i("ASSET API CALL", asset.attributes.toString());
                         Gson gson = new Gson();
                         String json = gson.toJson(asset.attributes);
                         handleAssetResponse(json);
+                        isAssetRunning = false;
                     }
                 } else {
-                    Log.d("ASSET API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    Log.e("ASSET API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    isAssetRunning = false;
                 }
             }
 
             @Override
             public void onFailure(Call<Asset> call, Throwable t) {
-                Log.d("ASSET API CALL", t.getMessage().toString());
+                Log.e("ASSET API CALL", t.getMessage().toString());
+                isAssetRunning = false;
             }
         });
     }
@@ -61,14 +65,14 @@ public class AssetClient {
         windDirection = JsonPath.read(data, "$.windDirection.value").toString();
         windSpeed = JsonPath.read(data, "$.windSpeed.value").toString();
 
-        Log.d("ASSET API CALL", "rainfall: " + rainfall);
-        //Log.d("ASSET API CALL", "uVIndex: " + uvIndex);
-        Log.d("ASSET API CALL", "manufacturer: " + manufacturer);
-        Log.d("ASSET API CALL", "temperature: " + temperature);
-        Log.d("ASSET API CALL", "humidity: " + humidity);
-        Log.d("ASSET API CALL", "location: " + location);
-        Log.d("ASSET API CALL", "place: " + place);
-        Log.d("ASSET API CALL", "windDirection: " + windDirection);
-        Log.d("ASSET API CALL", "windSpeed: " + windSpeed);
+        Log.i("ASSET API CALL", "rainfall: " + rainfall);
+        //Log.i("ASSET API CALL", "uVIndex: " + uvIndex);
+        Log.i("ASSET API CALL", "manufacturer: " + manufacturer);
+        Log.i("ASSET API CALL", "temperature: " + temperature);
+        Log.i("ASSET API CALL", "humidity: " + humidity);
+        Log.i("ASSET API CALL", "location: " + location);
+        Log.i("ASSET API CALL", "place: " + place);
+        Log.i("ASSET API CALL", "windDirection: " + windDirection);
+        Log.i("ASSET API CALL", "windSpeed: " + windSpeed);
     }
 }

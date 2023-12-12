@@ -55,9 +55,9 @@ public class SignupFragment extends Fragment {
             public void run() {
                 Log.d("TokenGetter","TokenGetter is running");
                 Log.d("WebView","WebView is loading: " + WebViewClient.isRunning);
-                Log.d("TokenClient","TokenClient is running: " + TokenClient.isRunning);
+                Log.d("TokenClient","TokenClient is running: " + TokenClient.isTokenRunning);
 
-                if (!TokenClient.isRunning) {
+                if (!TokenClient.isTokenRunning) {
                     if (TokenClient.accessToken != null) {
                         Intent i = new Intent(getContext(), MainActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

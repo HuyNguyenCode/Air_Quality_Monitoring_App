@@ -35,7 +35,7 @@ public class LoginFragment extends Fragment {
                 Log.d("Runnable","Runnable is running");
                 //Log.d("WebView","is loading: " + WebViewClient.isRunning);
 
-                if (!TokenClient.isRunning) {
+                if (!TokenClient.isTokenRunning) {
                     if (TokenClient.accessToken != null) {
                         Log.d("WebView","is loading (else): " + WebViewClient.isRunning);
 

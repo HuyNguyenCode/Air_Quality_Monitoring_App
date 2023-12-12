@@ -20,7 +20,7 @@ public class Asset {
     @SerializedName("type")
     public String type;
     @SerializedName("path")
-    public String path[];
+    public String[] path;
     @SerializedName("attributes")
     public Object attributes;
 }
