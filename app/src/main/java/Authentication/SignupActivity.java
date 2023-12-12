@@ -48,8 +48,8 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         init();
-        showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
 
+        showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
         // Lắng nghe sự kiện khi người dùng thay đổi trạng thái của CheckBox
         showPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -64,6 +64,7 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+
         Button signUpBtn = findViewById(R.id.btnSignup);
         RelativeLayout signUpContent =findViewById(R.id.singup_content);
 

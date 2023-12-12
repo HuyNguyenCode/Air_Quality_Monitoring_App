@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         CheckBox showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
         EditText passwordEditText = findViewById(R.id.password);
 
@@ -62,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton logInBtn = findViewById(R.id.btnLogin);
+       Button logInBtn = findViewById(R.id.btnLogin);
         TextView resetText = findViewById(R.id.forgot_password);
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override

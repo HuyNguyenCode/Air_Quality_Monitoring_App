@@ -54,6 +54,18 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_login_bg"
                 />
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/switchChinaBttn"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Trung Quốc"
+                android:padding="16dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/btn_login_bg"
+                />
 
 
 

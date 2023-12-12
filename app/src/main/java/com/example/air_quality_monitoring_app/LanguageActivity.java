@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
+
 
 import java.util.Locale;
 
@@ -19,6 +19,7 @@ public class LanguageActivity extends AppCompatActivity {
 
     TextView langEnBtn;
     TextView langViBtn;
+    TextView langCHBtn;
     String currentLanguage;
 
     @Override
@@ -28,6 +29,7 @@ public class LanguageActivity extends AppCompatActivity {
 
         langEnBtn = findViewById(R.id.switchLangEnBttn);
         langViBtn = findViewById(R.id.switchLangViBttn);
+        langCHBtn = findViewById(R.id.switchChinaBttn);
 
         currentLanguage = Locale.getDefault().toString();
         updateButtonColors();
@@ -55,6 +57,18 @@ public class LanguageActivity extends AppCompatActivity {
                 recreate();
             }
         });
+
+        langCHBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Đã thay đổi ngôn ngữ ứng dụng thành Trung Quốc",
+                        Toast.LENGTH_LONG).show();
+                updateViews("zh");
+                currentLanguage = "zh";
+                updateButtonColors();
+                recreate();
+            }
+        });
     }
 
     @Override
@@ -71,9 +85,17 @@ public class LanguageActivity extends AppCompatActivity {
         if (currentLanguage.equals("en")) {
             langEnBtn.setTextColor(getResources().getColor(R.color.purple_700));
             langViBtn.setTextColor(getResources().getColor(android.R.color.black));
-        } else if (currentLanguage.equals("vi")) {
+            langCHBtn.setTextColor(getResources().getColor(android.R.color.black));
+        }
+        else if (currentLanguage.equals("vi")) {
             langViBtn.setTextColor(getResources().getColor(R.color.purple_700));
             langEnBtn.setTextColor(getResources().getColor(android.R.color.black));
+            langCHBtn.setTextColor(getResources().getColor(android.R.color.black));
+        }
+        else if (currentLanguage.equals("zh")) {
+            langCHBtn.setTextColor(getResources().getColor(R.color.purple_700));
+            langEnBtn.setTextColor(getResources().getColor(android.R.color.black));
+            langViBtn.setTextColor(getResources().getColor(android.R.color.black));
         }
     }
 }

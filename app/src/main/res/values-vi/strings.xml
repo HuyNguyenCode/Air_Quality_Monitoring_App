@@ -4,54 +4,75 @@
     <string name="user">Người dùng</string>
     <string name="language">Ngôn ngữ</string>
     <string name="logout">Đăng xuất</string>
-    <string name="changepassword">Đổi mật khẩu</string>
-    <string name="show_password">Hiện mật khẩu</string>
-
+    <string name="changepassword">Đổi Mật khẩu</string>
+    <string name="show_password">Hiện Mật khẩu</string>
     <string name="app_name">MyUIT Air</string>
-    <string name="location">HÀ NỘI, VIỆT NAM</string>
-    <string name="date">Chủ Nhật, 19 tháng 9, 2023</string>
-    <string name="next">Tiếp theo</string>
-    <string name="previous">Trước đó</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Mật khẩu</string>
-    <string name="action_sign_in">Đăng nhập hoặc đăng ký</string>
-    <string name="action_sign_in_short">Đăng nhập</string>
-    <string name="invalid_username">Tên đăng nhập không hợp lệ</string>
-    <string name="invalid_password">Mật khẩu phải chứa nhiều hơn 5 kí tự</string>
-    <string name="login_failed">Đăng nhập thất bại</string>
-    <string name="login_btn">Đăng nhập</string>
-    <string name="login_google_btn">Đăng nhập với Google</string>
-    <string name="or">HOẶC</string>
-    <string name="create_account">Tạo tài khoản</string>
-    <string name="app_introduction">MyUIT Air cung cấp nhiều thông tin hữu ích để giúp bạn có một ngày tuyệt vời hơn. Hãy bắt đầu trải nghiệm ngay nào!</string>
-    <string name="register">Đăng ký</string>
-    <string name="register_introduction">Đăng ký tài khoản MyUIT để trải nghiệm hàng loạt tiện ích ngay trong ứng dụng</string>
-    <string name="email">Địa chỉ email</string>
-    <string name="create_password">Nhập mật khẩu</string>
-    <string name="confirm_password">Xác nhận mật khẩu</string>
-    <string name="already_have_account">Đã có tài khoản?</string>
-    <string name="level">VỪA PHẢI</string>
-    <string name="last_updated_time">3 phút trước</string>
-    <string name="last_updated_list">18 giây trước</string>
-    <string name="air_quality_status">High Pollen Concentrations</string>
+    <string name="yellow" translatable="false">Màu Vàng</string>
     <string name="title_map">Bản đồ</string>
     <string name="title_list">Danh sách</string>
     <string name="title_chart">Biểu đồ</string>
     <string name="title_more">Thêm</string>
+    <string name="location">HOUSTON, TX</string>
+    <string name="avatar" translatable="false">Avatar</string>
+    <string name="background" translatable="false">Nền</string>
+    <string name="date">Chủ Nhật, 19 tháng 9, 2023</string>
     <string name="title_co2">CO2</string>
     <string name="title_temp">Nhiệt độ</string>
     <string name="title_humidity">Độ ẩm</string>
     <string name="title_pm">PM2.5</string>
+    <string name="select">Chọn Thuộc tính</string>
+    <string name="hello_blank_fragment" translatable="false">Xin chào, fragment trống</string>
+    <string-array name="list_alert_title">
+        <item>Chào buổi sáng</item>
+        <item>Chào buổi chiều</item>
+        <item>Chào buổi tối</item>
+        <item>Chúc ngủ ngon</item>
+        <item>Tạm biệt</item>
+    </string-array>
+    <string name="title_activity_graph" translatable="false">Hoạt động biểu đồ</string>
+    <string name="first_fragment_label" translatable="false">Fragment Đầu Tiên</string>
+    <string name="second_fragment_label" translatable="false">Fragment Thứ Hai</string>
+    <string name="next">Tiếp Theo</string>
+    <string name="previous">Trước Đó</string>
+    <string name="title_activity_login" translatable="false">Hoạt động Đăng nhập</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mật khẩu</string>
+    <string name="action_sign_in">Đăng nhập hoặc đăng ký</string>
+    <string name="action_sign_in_short">Đăng nhập</string>
     <string name="welcome">MyUIT Air xin chào bạn!</string>
+    <string name="invalid_username">Tên người dùng không hợp lệ</string>
+    <string name="invalid_password">Mật khẩu phải có hơn 5 ký tự</string>
+    <string name="login_failed">Đăng nhập thất bại</string>
+    <string name="login_btn">Đăng nhập</string>
+    <string name="login_google_btn">Đăng nhập với Google</string>
+    <string name="or">HOẶC</string>
+    <string name="create_account">Tạo tài khoản của bạn</string>
+    <string name="app_introduction">MyUIT Air cung cấp nhiều thông tin hữu ích để giúp bạn có một ngày tuyệt vời hơn. Hãy bắt đầu trải nghiệm ngay!</string>
+    <string name="register">Đăng ký</string>
+    <string name="rspw">Đặt lại mật khẩu của bạn</string>
+    <string name="register_introduction">Đăng ký một tài khoản MyUIT để bắt đầu trải nghiệm tất cả các tính năng và lợi ích</string>
+    <string name="rspw_introduction">Nhập email và mật khẩu của bạn để đặt lại mật khẩu</string>
+    <string name="email">Địa chỉ Email</string>
+    <string name="create_password">Tạo Mật khẩu</string>
+    <string name="new_password">Nhập mật khẩu mới</string>
+    <string name="confirm_password">Xác nhận Mật khẩu của bạn</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu mới của bạn</string>
     <string name="sign_up">Đăng ký</string>
-    <string name="time_weather">Chủ nhật | 10:08</string>
+    <string name="save">Lưu</string>
+    <string name="back">Quay lại</string>
+    <string name="already_have_account">Đã có tài khoản?</string>
+    <string name="level">MODERATOR</string>
+    <string name="last_updated_time">3 PHÚT TRƯỚC</string>
+    <string name="time_weather">Chủ Nhật | 10:08 SÁNG</string>
     <string name="weather_temperature">25°</string>
-    <string name="weather_status">Nhiều mây</string>
-    <string name="login">Đăng nhập</string>
+    <string name="weather_status">Nhiều Mây</string>
+    <string name="last_updated_list">18 GIÂY TRƯỚC</string>
+    <string name="air_quality_status">Nồng độ Phấn hoa cao</string>
+    <string name="login">Đăng Nhập</string>
     <string name="login_introduction">Đăng nhập vào tài khoản MyUIT để trải nghiệm hàng loạt tiện ích tuyệt vời</string>
-    <string name="email_or_username">Email hoặc tên đăng nhập</string>
+    <string name="email_or_username">Email hoặc tên người dùng</string>
     <string name="password">Mật khẩu</string>
-    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="forgot_password">Quên Mật khẩu?</string>
     <string name="no_account">Chưa có tài khoản?</string>
     <string name="select_tf">Khung thời gian</string>
     <string name="select_attr">Chọn thuộc tính</string>

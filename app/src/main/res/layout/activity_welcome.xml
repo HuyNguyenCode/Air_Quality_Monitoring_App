@@ -8,36 +8,60 @@
 
 
     <TextView
-        android:id="@+id/switchLangEnBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:text="EN"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/textDivider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/switchLangEnBtn"
-        android:text="|"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_margin="5dp"/>
-
-    <TextView
         android:id="@+id/switchLangViBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/textDivider"
         android:text="VI"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
 
+    <TextView
+        android:id="@+id/textDivider1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@id/switchLangViBtn"
+        android:text="|"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/switchLangEnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EN"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/textDivider1"/>
+
+    <TextView
+        android:id="@+id/textDivider2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@id/switchLangEnBtn"
+        android:text="|"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/switchLangChBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CH"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/textDivider2"/>
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
         android:layout_width="wrap_content"

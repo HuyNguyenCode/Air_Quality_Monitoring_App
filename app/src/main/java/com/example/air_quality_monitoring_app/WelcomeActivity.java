@@ -30,13 +30,21 @@ public class WelcomeActivity extends AppCompatActivity {
 
         TextView langEnBtn = (TextView) findViewById(R.id.switchLangEnBtn);
         TextView langViBtn = (TextView) findViewById(R.id.switchLangViBtn);
+        TextView langChBtn = (TextView) findViewById(R.id.switchLangChBtn);
 
         if(currentLanguage.equals("vi")) {
             langViBtn.setTextColor(getResources().getColor(R.color.purple_700));
             langEnBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+            langChBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+        }
+        else if(currentLanguage.equals("en")) {
+            langEnBtn.setTextColor(getResources().getColor(R.color.purple_700));
+            langViBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+            langChBtn.setTextColor(getResources().getColor(R.color.ashGrey));
         }
         else {
-            langEnBtn.setTextColor(getResources().getColor(R.color.purple_700));
+            langChBtn.setTextColor(getResources().getColor(R.color.purple_700));
+            langEnBtn.setTextColor(getResources().getColor(R.color.ashGrey));
             langViBtn.setTextColor(getResources().getColor(R.color.ashGrey));
         }
 
@@ -49,6 +57,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 if(currentLanguage.equals("en")) {
                     langEnBtn.setTextColor(getResources().getColor(R.color.purple_700));
                     langViBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+                    langChBtn.setTextColor(getResources().getColor(R.color.ashGrey));
                 }
                 recreate();
             }
@@ -63,6 +72,22 @@ public class WelcomeActivity extends AppCompatActivity {
                 if(currentLanguage.equals("vi")) {
                     langViBtn.setTextColor(getResources().getColor(R.color.purple_700));
                     langEnBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+                    langChBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+                }
+                recreate();
+            }
+        });
+
+        langChBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "申请语言更改为中文",
+                        Toast.LENGTH_LONG).show();
+                updateViews("zh");
+                if(currentLanguage.equals("zh")) {
+                    langChBtn.setTextColor(getResources().getColor(R.color.purple_700));
+                    langEnBtn.setTextColor(getResources().getColor(R.color.ashGrey));
+                    langViBtn.setTextColor(getResources().getColor(R.color.ashGrey));
                 }
                 recreate();
             }
