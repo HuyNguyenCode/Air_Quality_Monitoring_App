@@ -111,7 +111,7 @@
                     app:startIconDrawable="@drawable/ic_timelapse_24dp"
                     app:startIconContentDescription="@string/timeframe"
                     app:endIconMode="dropdown_menu"
-                    app:layout_constraintTop_toBottomOf="@id/attributeTextField"
+                    app:layout_constraintTop_toBottomOf="@id/sensorTextField"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/guidelineVertical">
 

@@ -16,7 +16,7 @@ public interface ApiService {
     @GET("api/master/user/user")
     Call<User> getUser(@Header("Authorization") String token);
 
-//    @PUT("https://uiot.ixxc.dev/api/master/user/{realm}/reset-password/{id}")
+//    @PUT("api/master/user/{realm}/reset-password/{id}")
 //    Call<User> resetPassword(@Header("Authorization") String token, @Path("realm") String realm,
 //                             @Path("id") String id, @Body Param param);
 

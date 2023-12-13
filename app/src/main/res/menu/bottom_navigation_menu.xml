@@ -19,7 +19,7 @@
         android:title="@string/map"/>
 
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/userInfoFragment"
         android:enabled="true"
         android:icon="@drawable/settings_icon_selector"
         android:title="@string/settings"/>

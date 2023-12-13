@@ -54,6 +54,9 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.compose.material3:material3:1.1.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.preference:preference-ktx:1.2.1")
+    implementation("androidx.webkit:webkit:1.9.0")
+    implementation("androidx.fragment:fragment:1.6.2")
 
     val navVersion = "2.7.5"
 
@@ -88,6 +91,9 @@ dependencies {
 
     //MPAndroidChart library
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    //airbnb Lottie Android library
+    implementation("com.airbnb.android:lottie:6.2.0")
 
     //https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path
     implementation("com.jayway.jsonpath:json-path:2.8.0")

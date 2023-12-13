@@ -9,60 +9,25 @@
         android:id="@+id/mapFragment"
         android:name="com.ninegroup.weather.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
-        <action
-            android:id="@+id/action_mapFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_mapFragment_to_monitoringFragment"
-            app:destination="@id/monitoringFragment" />
-        <action
-            android:id="@+id/action_mapFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.ninegroup.weather.HomeFragment"
-        android:label="HomeFragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_monitoringFragment"
-            app:destination="@id/monitoringFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
+        android:label="HomeFragment" />
     <fragment
         android:id="@+id/monitoringFragment"
         android:name="com.ninegroup.weather.MonitoringFragment"
-        android:label="MonitoringFragment" >
-        <action
-            android:id="@+id/action_monitoringFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_monitoringFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
-            android:id="@+id/action_monitoringFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
+        android:label="MonitoringFragment" />
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.ninegroup.weather.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.ninegroup.weather.ResetPasswordFragment"
+        android:label="ResetPasswordFragment" />
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.ninegroup.weather.UserInfoFragment"
+        android:label="UserInfoFragment" >
         <action
-            android:id="@+id/action_settingsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_monitoringFragment"
-            app:destination="@id/monitoringFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_nav_graph_welcome"
-            app:destination="@id/nav_graph_welcome" />
+            android:id="@+id/action_userInfoFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
 </navigation>

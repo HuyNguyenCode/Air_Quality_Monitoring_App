@@ -14,6 +14,7 @@ public class TokenClient {
     private Token token;
     public static String accessToken = null;
     public static Boolean isTokenRunning = true;
+    public static Boolean isSuccess = false;
 
     public void getToken(String username, String password) {
         apiService.getToken("openremote", username, password, "password")
@@ -26,10 +27,12 @@ public class TokenClient {
                         Log.i("TOKEN API CALL", token.getAccessToken());
                         Log.i("TOKEN API CALL", token.getTokenType());
                         accessToken = token.getAccessToken();
+                        isSuccess = true;
                         isTokenRunning = false;
                     }
                 } else {
                     Log.e("TOKEN API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    isSuccess = false;
                     isTokenRunning = false;
                 }
             }
@@ -37,6 +40,7 @@ public class TokenClient {
             @Override
             public void onFailure(Call<Token> call, Throwable t) {
                 Log.e("TOKEN API CALL", t.getMessage().toString());
+                isSuccess = false;
                 isTokenRunning = false;
             }
         });

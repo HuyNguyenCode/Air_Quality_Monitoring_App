@@ -40,11 +40,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/weatherStatusImageView"
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/weatherAnimationView"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/partly_cloudy_day" />
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_speed="1.2"
+                    app:lottie_rawRes="@raw/partly_cloudy_day" />
 
                 <TextView
                     android:id="@+id/temperature"
@@ -115,16 +118,18 @@
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/uvImageView"
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/uvAnimationView"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="5dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/uv_index"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_speed="1.2"
+                            app:lottie_rawRes="@raw/uv_index"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/uvLinearLayout" />
+                            app:layout_constraintTop_toBottomOf="@+id/uvLinearLayout"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -174,16 +179,18 @@
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/humidityImageView"
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/humidityAnimationView"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="5dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/humidity"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_speed="1.2"
+                            app:lottie_rawRes="@raw/humidity"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/humidityLinearLayout" />
+                            app:layout_constraintTop_toBottomOf="@+id/humidityLinearLayout"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -233,16 +240,18 @@
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/rainImageView"
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/rainAnimationView"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="5dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/raindrop_measure"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_speed="1.2"
+                            app:lottie_rawRes="@raw/raindrop_measure"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/rainLinearLayout" />
+                            app:layout_constraintTop_toBottomOf="@+id/rainLinearLayout"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -292,16 +301,18 @@
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/windImageView"
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/windAnimationView"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="5dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/windsock_weak"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_speed="1.2"
+                            app:lottie_rawRes="@raw/windsock"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/windLinearLayout" />
+                            app:layout_constraintTop_toBottomOf="@+id/windLinearLayout"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,5 +1,6 @@
 package com.ninegroup.weather.webview;
 
+import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 
@@ -41,13 +42,14 @@ public class WebViewClient extends android.webkit.WebViewClient {
                 fillSignInForm(webView);
                 break;
             case 3:
-                if (url.contains("UPDATE_PASSWORD"))
-                    fillResetPasswordForm(webView);
+                fillResetPasswordForm(webView);
                 break;
         }
     }
 
     public void fillSignUpForm(WebView webView) {
+        Log.i("WebViewClient", "Signing up");
+
         String usernameScript = "document.getElementById('username').value='" + username + "';";
         String emailScript = "document.getElementById('email').value='" + email + "';";
         String passwordScript = "document.getElementById('password').value='" + password + "';";
@@ -65,6 +67,8 @@ public class WebViewClient extends android.webkit.WebViewClient {
     }
 
     public void fillSignInForm(WebView webView) {
+        Log.i("WebViewClient", "Signing in");
+
         String usernameScript = "document.getElementById('username').value='" + username + "';";
         String passwordScript = "document.getElementById('password').value='" + password + "';";
         String submitScript = "document.querySelector('button[name=\"login\"]').click()";
@@ -77,12 +81,16 @@ public class WebViewClient extends android.webkit.WebViewClient {
     }
 
     public void fillResetPasswordForm(WebView webView) {
-        String pwdScript = "document.getElementById('password-new').value='" + username + "';";
-        String repwdScript = "document.getElementById('password-confirm').value='" + password + "';";
+        Log.i("WebViewClient", "Resetting password");
+
+        String oldPasswordScript = "document.getElementById('password').value='" + password + "';";
+        String newPasswordScript = "document.getElementById('password-new').value='" + newPassword + "';";
+        String confirmPasswordScript = "document.getElementById('password-confirm').value='" + newPassword + "';";
         String submitScript = "document.querySelector('button').click()";
 
-        webView.evaluateJavascript(pwdScript,null);
-        webView.evaluateJavascript(repwdScript,null);
+        webView.evaluateJavascript(oldPasswordScript,null);
+        webView.evaluateJavascript(newPasswordScript,null);
+        webView.evaluateJavascript(confirmPasswordScript,null);
         webView.evaluateJavascript(submitScript,null);
 
         isRunning = false;

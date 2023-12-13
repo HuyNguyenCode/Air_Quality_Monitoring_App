@@ -21,6 +21,7 @@ public class UserClient {
                 if (response.isSuccessful()) {
                     user = response.body();
                     if (user != null) {
+                        Log.i("USER API CALL", user.id);
                         Log.i("USER API CALL", user.username);
                         Log.i("USER API CALL", user.firstName);
                         Log.i("USER API CALL", user.lastName);

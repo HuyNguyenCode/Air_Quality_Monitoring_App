@@ -36,16 +36,20 @@ public class SignupFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
-                Log.d("Runnable","Runnable is running");
+                Log.d("Sign Up Runnable","Sign Up Runnable is running");
                 Log.d("WebView","WebView is loading: " + WebViewClient.isRunning);
 
                 if (!WebViewClient.isRunning) {
                     TokenClient tokenClient = new TokenClient();
                     tokenClient.getToken(username, password);
 
-                    Log.d("Runnable","Runnable is stopped");
+                    Log.d("Sign Up Runnable","Sign Up Runnable is stopped");
                     handler.postDelayed(tokenGetter, 1000);
                     handler.removeCallbacks(runnable);
+                }
+                else {
+                    Log.d("Sign Up Runnable","Sign Up Runnable is running again");
+                    handler.postDelayed(runnable, 1000);
                 }
             }
         };
@@ -53,20 +57,20 @@ public class SignupFragment extends Fragment {
         tokenGetter = new Runnable() {
             @Override
             public void run() {
-                Log.d("TokenGetter","TokenGetter is running");
+                Log.d("Sign Up TokenGetter","Sign Up TokenGetter is running");
                 Log.d("WebView","WebView is loading: " + WebViewClient.isRunning);
                 Log.d("TokenClient","TokenClient is running: " + TokenClient.isTokenRunning);
 
                 if (!TokenClient.isTokenRunning) {
-                    if (TokenClient.accessToken != null) {
+                    if (TokenClient.accessToken != null && TokenClient.isSuccess) {
                         Intent i = new Intent(getContext(), MainActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
                         Toast.makeText(getContext(), "Signed up and logged in successfully!",
                                 Toast.LENGTH_SHORT).show();
 
-                        Log.d("TokenGetter","TokenGetter is stopped. Token is not null");
+                        Log.d("Sign Up TokenGetter","Sign Up TokenGetter is stopped. Token is not null");
                         Navigation.findNavController(fragmentView).navigate(R.id.action_signupFragment_to_loginFragment);
                         handler.removeCallbacks(tokenGetter);
                     }
@@ -76,9 +80,13 @@ public class SignupFragment extends Fragment {
                         binding.progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getContext(), "Sign up failed! The username or email may already exists",
                                 Toast.LENGTH_SHORT).show();
-                        Log.d("TokenGetter","TokenGetter is stopped. Token is null");
+                        Log.d("Sign Up TokenGetter","Sign Up TokenGetter is stopped. Token is null");
                         handler.removeCallbacks(tokenGetter);
                     }
+                }
+                else {
+                    Log.d("Sign Up TokenGetter","Sign Up TokenGetter is running again");
+                    handler.postDelayed(tokenGetter, 1000);
                 }
             }
         };
@@ -101,32 +109,38 @@ public class SignupFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initVariables();
-        fragmentView = (View) view;
+        ((WelcomeActivity) getActivity()).checkConnection();
+        fragmentView = view;
 
         binding.signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = binding.usernameEditText.getText().toString();
-                email = binding.emailEditText.getText().toString();
-                password = binding.passwordEditText.getText().toString();
+                ((WelcomeActivity) getActivity()).checkConnection();
+                if (WelcomeActivity.isConnected) {
+                    username = binding.usernameEditText.getText().toString();
+                    email = binding.emailEditText.getText().toString();
+                    password = binding.passwordEditText.getText().toString();
 
-                binding.signUpButton.setText("");
-                binding.signUpButton.setEnabled(false);
-                binding.progressBar.setVisibility(View.VISIBLE);
+                    binding.signUpButton.setText("");
+                    binding.signUpButton.setEnabled(false);
+                    binding.progressBar.setVisibility(View.VISIBLE);
 
-                WebStorage.getInstance().deleteAllData();
-                CookieManager.getInstance().removeAllCookies(null);
-                CookieManager.getInstance().flush();
+                    WebStorage.getInstance().deleteAllData();
+                    CookieManager.getInstance().removeAllCookies(null);
+                    CookieManager.getInstance().flush();
 
-                WebView webView = binding.webView;
-                webViewClient = new WebViewClient(username, email, password, null, 1);
-                //webView.setVisibility(View.GONE);
-                CookieManager.getInstance().setAcceptCookie(true);
-                webView.getSettings().setJavaScriptEnabled(true);
-                webView.setWebViewClient(webViewClient);
-                webView.loadUrl("https://uiot.ixxc.dev/");
+                    WebView webView = binding.webView;
+                    //webView.setVisibility(View.VISIBLE);
+                    webViewClient = new WebViewClient(username, email, password, null, 1);
+                    webView.getSettings().setJavaScriptEnabled(true);
+                    webView.setWebViewClient(webViewClient);
+                    webView.loadUrl("https://uiot.ixxc.dev/");
 
-                handler.postDelayed(runnable, 1000);
+                    handler.postDelayed(runnable, 1000);
+                }
+                else
+                    Toast.makeText(getContext(), "No network connection available! Please connect to a network with Internet access!",
+                            Toast.LENGTH_SHORT).show();
 
 //                TokenClient tokenClient = new TokenClient();
 //                tokenClient.getToken(username, password);

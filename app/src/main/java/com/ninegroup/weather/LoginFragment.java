@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.WebStorage;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,21 +33,20 @@ public class LoginFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
-                Log.d("Runnable","Runnable is running");
-                //Log.d("WebView","is loading: " + WebViewClient.isRunning);
+                Log.d("Login Runnable","Login Runnable is running");
 
                 if (!TokenClient.isTokenRunning) {
-                    if (TokenClient.accessToken != null) {
+                    if (TokenClient.accessToken != null && TokenClient.isSuccess) {
                         Log.d("WebView","is loading (else): " + WebViewClient.isRunning);
 
                         Intent i = new Intent(getContext(), MainActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
                         Toast.makeText(getContext(), "Login successful",
                                 Toast.LENGTH_SHORT).show();
 
-                        Log.d("Runnable","Runnable is stopped");
+                        Log.d("Login Runnable","Login Runnable is stopped");
                         handler.removeCallbacks(runnable);
                     }
                     else {
@@ -56,6 +56,10 @@ public class LoginFragment extends Fragment {
                         Toast.makeText(getContext(), "Login failed! Account does not exist",
                                 Toast.LENGTH_SHORT).show();
                     }
+                }
+                else {
+                    Log.d("Login Runnable","Login Runnable is running again");
+                    handler.postDelayed(runnable, 1000);
                 }
             }
         };
@@ -78,39 +82,38 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initVariables();
+        ((WelcomeActivity) getActivity()).checkConnection();
 
         binding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = binding.usernameEditText.getText().toString();
-                password = binding.passwordEditText.getText().toString();
+                ((WelcomeActivity) getActivity()).checkConnection();
+                if (WelcomeActivity.isConnected) {
+                    username = binding.usernameEditText.getText().toString();
+                    password = binding.passwordEditText.getText().toString();
 
-                binding.signInButton.setText("");
-                binding.signInButton.setEnabled(false);
-                binding.progressBar.setVisibility(View.VISIBLE);
+                    binding.signInButton.setText("");
+                    binding.signInButton.setEnabled(false);
+                    binding.progressBar.setVisibility(View.VISIBLE);
 
-                WebStorage.getInstance().deleteAllData();
-                CookieManager.getInstance().removeAllCookies(null);
-                CookieManager.getInstance().flush();
+                    WebStorage.getInstance().deleteAllData();
+                    CookieManager.getInstance().removeAllCookies(null);
+                    CookieManager.getInstance().flush();
 
-//                WebView webView = binding.webView;
-//                webViewClient = new WebViewClient(username, null, password, null, 2);
-//                //webView.setVisibility(View.GONE);
-//                CookieManager.getInstance().setAcceptCookie(true);
-//                webView.getSettings().setJavaScriptEnabled(true);
-//                webView.setWebViewClient(webViewClient);
-//                webView.loadUrl("https://uiot.ixxc.dev/");
-//
-//                Log.d("WebView","is loading: " + WebViewClient.isRunning);
+                    WebView webView = binding.webView;
+                    webViewClient = new WebViewClient(username, null, password, null, 2);
+                    webView.getSettings().setJavaScriptEnabled(true);
+                    webView.setWebViewClient(webViewClient);
+                    webView.loadUrl("https://uiot.ixxc.dev/");
 
-                TokenClient tokenClient = new TokenClient();
-                tokenClient.getToken(username, password);
+                    TokenClient tokenClient = new TokenClient();
+                    tokenClient.getToken(username, password);
 
-                handler.postDelayed(runnable, 1000);
-                //handler.removeCallbacks(runnable);
-
-                //startActivity(new Intent(getContext(), MainActivity.class));
-                //Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainActivity);
+                    handler.postDelayed(runnable, 1000);
+                }
+                else
+                    Toast.makeText(getContext(), "No network connection available! Please connect to a network with Internet access!",
+                            Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -118,13 +121,6 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).popBackStack();
-            }
-        });
-
-        binding.forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_resetPasswordFragment);
             }
         });
     }

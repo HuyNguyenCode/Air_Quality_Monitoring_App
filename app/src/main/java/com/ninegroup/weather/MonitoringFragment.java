@@ -50,36 +50,6 @@ public class MonitoringFragment extends Fragment {
     private Long fromTimestamp = null;
     private Long toTimestamp = null;
 
-    private void initVariables() {
-        handler = new Handler();
-        updateUI = new Runnable() {
-            @Override
-            public void run() {
-                Log.i("UpdateUI", "UpdateUI process is running");
-
-                if (!DatapointClient.isDatapointRunning) {
-                    List<Datapoint> datapoints = DatapointClient.datapointList;
-                    if (datapoints.get(0).getX() != null) {
-                        List<Entry> entries = new ArrayList<Entry>();
-                        for (Datapoint data : datapoints) {
-                            // turn your data into Entry objects
-                            entries.add(new Entry(data.getX(), data.getY()));
-                        }
-                        LineDataSet dataSet = new LineDataSet(entries, "Temperature"); // add entries to dataset
-                        //dataSet.setColor(...);
-                        //dataSet.setValueTextColor(...); // styling, ...
-                        LineData lineData = new LineData(dataSet);
-                        binding.lineChart.setData(lineData);
-                        binding.lineChart.invalidate(); // refresh
-                    }
-
-                    Log.i("UpdateUI", "UpdateUI process is stopped");
-                    handler.removeCallbacks(updateUI);
-                }
-            }
-        };
-    }
-
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
@@ -202,6 +172,36 @@ public class MonitoringFragment extends Fragment {
                 openDateRangePicker();
             }
         });
+    }
+
+    private void initVariables() {
+        handler = new Handler();
+        updateUI = new Runnable() {
+            @Override
+            public void run() {
+                Log.i("UpdateUI", "UpdateUI process is running");
+
+                if (!DatapointClient.isDatapointRunning) {
+                    List<Datapoint> datapoints = DatapointClient.datapointList;
+                    if (datapoints.get(0).getX() != null) {
+                        List<Entry> entries = new ArrayList<Entry>();
+                        for (Datapoint data : datapoints) {
+                            // turn your data into Entry objects
+                            entries.add(new Entry(data.getX(), data.getY()));
+                        }
+                        LineDataSet dataSet = new LineDataSet(entries, "Temperature"); // add entries to dataset
+                        //dataSet.setColor(...);
+                        //dataSet.setValueTextColor(...); // styling, ...
+                        LineData lineData = new LineData(dataSet);
+                        binding.lineChart.setData(lineData);
+                        binding.lineChart.invalidate(); // refresh
+                    }
+
+                    Log.i("UpdateUI", "UpdateUI process is stopped");
+                    handler.removeCallbacks(updateUI);
+                }
+            }
+        };
     }
 
     private void setUpDateRangePicker() {
