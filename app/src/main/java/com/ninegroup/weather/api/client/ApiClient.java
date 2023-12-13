@@ -101,6 +101,7 @@ public class ApiClient {
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://103.126.161.199/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .client(client)
                 .build();
 

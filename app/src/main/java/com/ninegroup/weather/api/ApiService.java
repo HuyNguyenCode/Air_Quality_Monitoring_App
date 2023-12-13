@@ -2,6 +2,7 @@ package com.ninegroup.weather.api;
 
 import java.util.List;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -33,5 +34,5 @@ public interface ApiService {
     @POST("api/master/asset/datapoint/{assetId}/attribute/{attributeName}")
     Call<List<Datapoint>> getDatapoint(@Path("assetId") String assetId,
                                        @Path("attributeName") String attributeName,
-                                       @Body DatapointRequest body);
+                                       @Body RequestBody body);
 }
