@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.ninegroup.weather.R;
 import com.ninegroup.weather.databinding.FragmentMapBinding;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -64,6 +65,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 .position(new LatLng(
                         10.869778736885038,
                         106.80280655508835))
-                .title("Undefined location"));
+                .title("Default Weather"));
     }
 }

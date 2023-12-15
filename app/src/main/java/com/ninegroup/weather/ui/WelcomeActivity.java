@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
 import android.content.Context;
 import android.content.IntentFilter;
@@ -7,11 +7,14 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.ninegroup.weather.network.ConnectionReceiver;
+import com.ninegroup.weather.R;
 import com.ninegroup.weather.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity implements ConnectionReceiver.ReceiverListener {
@@ -20,6 +23,7 @@ public class WelcomeActivity extends AppCompatActivity implements ConnectionRece
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         // Set the layout file as the content view.
         binding = ActivityWelcomeBinding.inflate(getLayoutInflater());

@@ -13,6 +13,8 @@ public class UserClient {
     private final String accessToken = TokenClient.accessToken;
     private final ApiService apiService = ApiClient.getClient(accessToken).create(ApiService.class);
     private User user;
+    public static Boolean isUserRunning = true;
+    public static Boolean isSuccess = false;
 
     public void getUser() {
         apiService.getUser(accessToken).enqueue(new Callback<User>() {
@@ -28,15 +30,21 @@ public class UserClient {
 //                        Gson gson = new Gson();
 //                        String json = gson.toJson(asset.attributes);
 //                        handleAssetResponse(json);
+                        isSuccess = true;
+                        isUserRunning = false;
                     }
                 } else {
                     Log.e("USER API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    isSuccess = false;
+                    isUserRunning = false;
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Log.e("TOKEN API CALL", t.getMessage().toString());
+                isSuccess = false;
+                isUserRunning = false;
             }
         });
     }

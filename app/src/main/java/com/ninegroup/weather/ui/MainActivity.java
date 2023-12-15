@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -16,17 +17,19 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ninegroup.weather.R;
 import com.ninegroup.weather.api.client.AssetClient;
 import com.ninegroup.weather.api.client.TokenClient;
 import com.ninegroup.weather.databinding.ActivityMainBinding;
+import com.ninegroup.weather.network.ConnectionReceiver;
 
-// Implement OnMapReadyCallback.
-public class MainActivity extends AppCompatActivity implements ConnectionReceiver.ReceiverListener{
+public class MainActivity extends AppCompatActivity implements ConnectionReceiver.ReceiverListener {
     private ActivityMainBinding binding;
     public static boolean isConnected;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         // Set the layout file as the content view.
         binding = ActivityMainBinding.inflate(getLayoutInflater());

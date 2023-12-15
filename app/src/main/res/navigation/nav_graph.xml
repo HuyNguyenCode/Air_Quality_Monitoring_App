@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.ninegroup.weather.MapFragment"
+        android:name="com.ninegroup.weather.ui.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ninegroup.weather.HomeFragment"
+        android:name="com.ninegroup.weather.ui.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/monitoringFragment"
-        android:name="com.ninegroup.weather.MonitoringFragment"
+        android:name="com.ninegroup.weather.ui.MonitoringFragment"
         android:label="MonitoringFragment" />
     <fragment
         android:id="@+id/resetPasswordFragment"
-        android:name="com.ninegroup.weather.ResetPasswordFragment"
+        android:name="com.ninegroup.weather.ui.ResetPasswordFragment"
         android:label="ResetPasswordFragment" />
     <fragment
         android:id="@+id/userInfoFragment"
-        android:name="com.ninegroup.weather.UserInfoFragment"
+        android:name="com.ninegroup.weather.ui.UserInfoFragment"
         android:label="UserInfoFragment" >
         <action
             android:id="@+id/action_userInfoFragment_to_resetPasswordFragment"

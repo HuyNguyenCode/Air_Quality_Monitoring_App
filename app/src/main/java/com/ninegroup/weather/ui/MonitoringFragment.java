@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
@@ -21,6 +22,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
+import com.ninegroup.weather.R;
 import com.ninegroup.weather.api.Datapoint;
 import com.ninegroup.weather.api.client.DatapointClient;
 import com.ninegroup.weather.databinding.FragmentMonitoringBinding;
@@ -43,6 +45,7 @@ public class MonitoringFragment extends Fragment {
     private SimpleDateFormat dateParse = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
     private Handler handler;
     private Runnable updateUI;
+    private Runnable timedOut;
     private Integer currentSensor = 1; // 1 = Weather sensor, 2 = Air Quality sensor
     private String timePicked;
     private String assetId = null;
@@ -70,6 +73,7 @@ public class MonitoringFragment extends Fragment {
         initVariables();
         setUpDateRangePicker();
         setUpTimePicker();
+        ((MainActivity) getActivity()).checkConnection();
 
         binding.datetimeAutoComplete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,14 +148,21 @@ public class MonitoringFragment extends Fragment {
         binding.viewChartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.sensorTextAutoComplete.getText() != null && binding.attributeTextAutoComplete.getText() != null
-                        && binding.timeframeTextAutoComplete.getText() != null && binding.datetimeAutoComplete.getText() != null)
-                    if (assetId != null && attribute != null && fromTimestamp != null && toTimestamp != null) {
-                        DatapointClient datapointClient = new DatapointClient();
-                        datapointClient.getDatapoint(assetId, attribute, fromTimestamp.toString(), toTimestamp.toString());
+                ((MainActivity) getActivity()).checkConnection();
+                if (MainActivity.isConnected) {
+                    if (binding.sensorTextAutoComplete.getText() != null && binding.attributeTextAutoComplete.getText() != null
+                            && binding.datetimeAutoComplete.getText() != null)
+                        if (assetId != null && attribute != null && fromTimestamp != null && toTimestamp != null) {
+                            DatapointClient datapointClient = new DatapointClient();
+                            datapointClient.getDatapoint(assetId, attribute, fromTimestamp.toString(), toTimestamp.toString());
 
-                        handler.postDelayed(updateUI, 1000);
+                            handler.postDelayed(updateUI, 1000);
+                            handler.postDelayed(timedOut, 30000);
+                        }
                 }
+                else
+                    Toast.makeText(getContext(), "No network connection available! Please connect to a network with Internet access!",
+                            Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -181,9 +192,9 @@ public class MonitoringFragment extends Fragment {
             public void run() {
                 Log.i("UpdateUI", "UpdateUI process is running");
 
-                if (!DatapointClient.isDatapointRunning) {
+                if (!DatapointClient.isDatapointRunning && DatapointClient.isSuccess) {
                     List<Datapoint> datapoints = DatapointClient.datapointList;
-                    if (datapoints.get(0).getX() != null) {
+                    if (datapoints.size() != 0) {
                         List<Entry> entries = new ArrayList<Entry>();
                         for (Datapoint data : datapoints) {
                             // turn your data into Entry objects
@@ -196,10 +207,26 @@ public class MonitoringFragment extends Fragment {
                         binding.lineChart.setData(lineData);
                         binding.lineChart.invalidate(); // refresh
                     }
+                    else
+                        Toast.makeText(getContext(), "No history data available. Try extend the date range!",
+                                Toast.LENGTH_SHORT).show();
 
                     Log.i("UpdateUI", "UpdateUI process is stopped");
+                    handler.removeCallbacks(timedOut);
                     handler.removeCallbacks(updateUI);
                 }
+                else {
+                    Log.i("UpdateUI", "UpdateUI process is running again");
+                    handler.postDelayed(updateUI, 1000);
+                }
+            }
+        };
+
+        timedOut = new Runnable() {
+            @Override
+            public void run() {
+                Log.i("Timed out", "UpdateUI process is stopped due to timed out");
+                handler.removeCallbacks(updateUI);
             }
         };
     }
@@ -219,7 +246,7 @@ public class MonitoringFragment extends Fragment {
         dateRangePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>() {
             @Override
             public void onPositiveButtonClick(Pair<Long, Long> selection) {
-                binding.datetimeAutoComplete.setText(dateRangePicker.getHeaderText());
+                //binding.datetimeAutoComplete.setText(dateRangePicker.getHeaderText());
                 updateDateRange(selection.first, selection.second);
             }
         });
@@ -248,7 +275,7 @@ public class MonitoringFragment extends Fragment {
                 atZone(ZoneId.systemDefault()).toLocalDate().toString()
                 + " " + timePicked;
         String dateTime = startDateUnparsed + " → " + endDateUnparsed;
-        //binding.datetimeAutoComplete.setText(dateTime);
+        binding.datetimeAutoComplete.setText(dateTime);
         Log.i("DateTime", dateTime);
 
         convertToUnixTimestamp(startDateUnparsed, endDateUnparsed);

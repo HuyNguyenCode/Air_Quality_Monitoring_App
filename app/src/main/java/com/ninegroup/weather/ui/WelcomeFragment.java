@@ -1,6 +1,5 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.ninegroup.weather.databinding.FragmentUserBinding;
+import com.ninegroup.weather.R;
+import com.ninegroup.weather.databinding.FragmentWelcomeBinding;
 
-public class UserInfoFragment extends Fragment {
-    private FragmentUserBinding binding;
-    private View fragmentView;
+public class WelcomeFragment extends Fragment {
+    private FragmentWelcomeBinding binding;
 
-    @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
@@ -26,29 +24,31 @@ public class UserInfoFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentUserBinding.inflate(inflater, container, false);
+        binding = FragmentWelcomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragmentView = view;
 
-        binding.resetPasswordButton.setOnClickListener(new View.OnClickListener() {
+        binding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(fragmentView).navigate(R.id.action_userInfoFragment_to_resetPasswordFragment);
+                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_loginFragment);
             }
         });
 
-        binding.appSettingsButton.setOnClickListener(new View.OnClickListener() {
+        binding.signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), SettingsActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
+                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_signupFragment);
             }
         });
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

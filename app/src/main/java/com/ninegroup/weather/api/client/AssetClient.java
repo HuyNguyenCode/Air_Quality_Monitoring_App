@@ -25,6 +25,7 @@ public class AssetClient {
     public static String windDirection;
     public static String windSpeed;
     public static Boolean isAssetRunning = true;
+    public static Boolean isSuccess = false;
 
     public void getAsset() {
         apiService.getAsset("5zI6XqkQVSfdgOrZ1MyWEf").enqueue(new Callback<Asset>() {
@@ -38,10 +39,12 @@ public class AssetClient {
                         Gson gson = new Gson();
                         String json = gson.toJson(asset.attributes);
                         handleAssetResponse(json);
+                        isSuccess = true;
                         isAssetRunning = false;
                     }
                 } else {
                     Log.e("ASSET API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                    isSuccess = false;
                     isAssetRunning = false;
                 }
             }
@@ -49,6 +52,7 @@ public class AssetClient {
             @Override
             public void onFailure(Call<Asset> call, Throwable t) {
                 Log.e("ASSET API CALL", t.getMessage().toString());
+                isSuccess = false;
                 isAssetRunning = false;
             }
         });

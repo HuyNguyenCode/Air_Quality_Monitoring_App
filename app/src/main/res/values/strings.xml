@@ -34,4 +34,21 @@
     <string name="month">Month</string>
     <string name="year">Year</string>
     <string name="view">View</string>
+    <string name="sign_out">Log out</string>
+    <string name="theme">Theme</string>
+    <string name="light_theme">Light</string>
+    <string name="dark_theme">Dark</string>
+    <string name="system_default">System default</string>
+    <string name="language">Language</string>
+    <string name="realtime_weather">Realtime weather</string>
+    <string name="realtime_weather_summary">Allow the app to update weather information in realtime</string>
+    <string name="offline_access">Offline access</string>
+    <string name="offline_access_summary">Allow the app to save temporary data to storage for offline access</string>
+    <string name="download_location">Download location</string>
+    <string name="download_location_summary">Choose a directory to download and save file</string>
+    <string name="data">Data</string>
+    <string name="appearance">Appearance</string>
+    <string name="feedback">Feedback</string>
+    <string name="send_feedback">Send feedback</string>
+    <string name="send_feedback_summary">Report technical issues or suggest new features</string>
 </resources>

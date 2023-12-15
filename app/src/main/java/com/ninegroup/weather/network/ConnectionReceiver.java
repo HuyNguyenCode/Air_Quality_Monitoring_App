@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.network;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

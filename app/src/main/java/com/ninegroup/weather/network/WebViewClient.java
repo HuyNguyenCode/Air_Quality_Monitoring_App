@@ -1,4 +1,4 @@
-package com.ninegroup.weather.webview;
+package com.ninegroup.weather.network;
 
 import android.util.Log;
 import android.webkit.CookieManager;

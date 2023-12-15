@@ -98,44 +98,44 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:id="@+id/timeframeTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginEnd="@dimen/margin_base"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:layout_marginBottom="@dimen/margin_medium"
-                    android:hint="@string/timeframe"
-                    app:startIconDrawable="@drawable/ic_timelapse_24dp"
-                    app:startIconContentDescription="@string/timeframe"
-                    app:endIconMode="dropdown_menu"
-                    app:layout_constraintTop_toBottomOf="@id/sensorTextField"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/guidelineVertical">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--                    android:id="@+id/timeframeTextField"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="@dimen/margin_medium"-->
+<!--                    android:layout_marginEnd="@dimen/margin_base"-->
+<!--                    android:layout_marginTop="@dimen/margin_medium"-->
+<!--                    android:layout_marginBottom="@dimen/margin_medium"-->
+<!--                    android:hint="@string/timeframe"-->
+<!--                    app:startIconDrawable="@drawable/ic_timelapse_24dp"-->
+<!--                    app:startIconContentDescription="@string/timeframe"-->
+<!--                    app:endIconMode="dropdown_menu"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/sensorTextField"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/guidelineVertical">-->
 
-                    <AutoCompleteTextView
-                        android:id="@+id/timeframeTextAutoComplete"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:simpleItems="@array/timeframe">
-                    </AutoCompleteTextView>
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/timeframeTextAutoComplete"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:simpleItems="@array/timeframe">-->
+<!--                    </AutoCompleteTextView>-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:id="@+id/datetimePickerTextField"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/margin_base"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_medium"
                     android:hint="@string/time_range"
                     app:endIconMode="clear_text"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/guidelineVertical"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/attributeTextField"
                     app:startIconContentDescription="@string/time_range"
                     app:startIconDrawable="@drawable/ic_calendar_clock_24dp">

@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,9 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.ninegroup.weather.R;
 import com.ninegroup.weather.api.client.TokenClient;
 import com.ninegroup.weather.databinding.FragmentSignupBinding;
-import com.ninegroup.weather.webview.WebViewClient;
+import com.ninegroup.weather.network.WebViewClient;
 
 public class SignupFragment extends Fragment {
     private FragmentSignupBinding binding;
@@ -29,7 +30,7 @@ public class SignupFragment extends Fragment {
     private String username;
     private String password;
     private String email;
-    private com.ninegroup.weather.webview.WebViewClient webViewClient;
+    private com.ninegroup.weather.network.WebViewClient webViewClient;
 
     private void initVariables() {
         handler = new Handler();

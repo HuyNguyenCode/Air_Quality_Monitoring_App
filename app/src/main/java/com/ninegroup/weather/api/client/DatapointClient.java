@@ -23,6 +23,7 @@ public class DatapointClient {
     //private DatapointRequest body;
     public static List<Datapoint> datapointList;
     public static Boolean isDatapointRunning = true;
+    public static Boolean isSuccess = false;
 
     public void getDatapoint(String assetId, String attributeName, String fromTimestamp, String toTimestamp) {
         Map<String, Object> jsonParams = new ArrayMap<>();
@@ -39,17 +40,14 @@ public class DatapointClient {
                     public void onResponse(Call<List<Datapoint>> call, Response<List<Datapoint>> response) {
                         if (response.isSuccessful()) {
                             datapointList = response.body();
-                            if (datapointList != null) {
+                            if (datapointList != null && datapointList.size() != 0) {
                                 System.out.println(datapointList);
-                                System.out.println("x[2] = " + datapointList.get(2).getX());
-                                System.out.println("y[2] = " + datapointList.get(2).getY());
-                                Log.i("DATAPOINT API CALL", "x[2] = " + datapointList.get(2).getX());
-                                Log.i("DATAPOINT API CALL", "y[2] = " + datapointList.get(2).getY());
-                                //accessToken = token.getAccessToken();
-                                isDatapointRunning = false;
                             }
+                            isSuccess = true;
+                            isDatapointRunning = false;
                         } else {
                             Log.e("DATAPOINT API CALL", "API call unsuccessful! Your access token maybe expired or you don't have enough permissions.");
+                            isSuccess = false;
                             isDatapointRunning = false;
                         }
                     }
@@ -57,6 +55,7 @@ public class DatapointClient {
                     @Override
                     public void onFailure(Call<List<Datapoint>> call, Throwable t) {
                         Log.e("DATAPOINT API CALL", t.getMessage().toString());
+                        isSuccess = false;
                         isDatapointRunning = false;
                     }
                 });

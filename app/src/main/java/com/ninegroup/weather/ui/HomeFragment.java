@@ -1,4 +1,4 @@
-package com.ninegroup.weather;
+package com.ninegroup.weather.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
                 Log.i("UpdateUI", "UpdateUI process is running");
                 //Log.d("WebView","is loading: " + WebViewClient.isRunning);
 
-                if (!AssetClient.isAssetRunning) {
+                if (!AssetClient.isAssetRunning && AssetClient.isSuccess) {
                     binding.homeTopBar.setTitle(AssetClient.place);
                     binding.temperature.setText(AssetClient.temperature + "°");
                     //binding.weatherStatusImageView.setImageDrawable();
@@ -36,6 +36,10 @@ public class HomeFragment extends Fragment {
                     binding.windStatus.setText(AssetClient.windSpeed + " km/h");
                     Log.i("UpdateUI", "UpdateUI process is stopped");
                     handler.removeCallbacks(updateUI);
+                }
+                else {
+                    Log.i("UpdateUI", "UpdateUI process is running again");
+                    handler.postDelayed(updateUI, 200);
                 }
             }
         };

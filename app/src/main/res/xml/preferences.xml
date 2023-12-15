@@ -2,14 +2,54 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SwitchPreferenceCompat
-        app:key="data"
-        app:title="Realtime weather"
-        app:summary="Enable realtime weather update to get latest weather information on-time"/>
+    <PreferenceCategory
+        app:key="data_category"
+        app:title="@string/data">
 
-    <Preference
+        <SwitchPreferenceCompat
+            app:key="data"
+            app:title="@string/realtime_weather"
+            app:summary="@string/realtime_weather_summary"
+            app:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
+            app:key="data"
+            app:title="@string/offline_access"
+            app:summary="@string/offline_access_summary"
+            app:defaultValue="true"/>
+
+        <Preference
+            app:key="data"
+            app:title="@string/download_location"
+            app:summary="@string/download_location_summary"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="appearance_category"
+        app:title="@string/appearance">
+
+        <ListPreference
+            app:key="appearance"
+            app:title="@string/language"
+            app:summary="@string/current_language"/>
+
+        <ListPreference
+            app:key="appearance"
+            app:title="@string/theme"
+            app:summary="@string/system_default"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         app:key="feedback"
-        app:title="Send feedback"
-        app:summary="Report technical issues or suggest new features"/>
+        app:title="@string/feedback">
+
+        <Preference
+            app:key="feedback"
+            app:title="@string/send_feedback"
+            app:summary="@string/send_feedback_summary"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
