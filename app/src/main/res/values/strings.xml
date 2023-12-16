@@ -51,4 +51,6 @@
     <string name="feedback">Feedback</string>
     <string name="send_feedback">Send feedback</string>
     <string name="send_feedback_summary">Report technical issues or suggest new features</string>
+    <string name="save_login_info">Save login info</string>
+    <string name="remember_me">Remember me</string>
 </resources>

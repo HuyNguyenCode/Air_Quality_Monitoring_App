@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,14 +37,18 @@ public class LoginFragment extends Fragment {
             @Override
             public void run() {
                 Log.d("Login Runnable","Login Runnable is running");
+                //Boolean remember = WelcomeActivity.dataStoreHelper.getBooleanValue("remember_login");
 
                 if (!TokenClient.isTokenRunning) {
                     if (TokenClient.accessToken != null && TokenClient.isSuccess) {
                         Log.d("WebView","is loading (else): " + WebViewClient.isRunning);
 
+                        WelcomeActivity.dataStoreHelper.putStringValue("access_token", TokenClient.accessToken);
+
                         Intent i = new Intent(getContext(), MainActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getActivity().finish();
                         startActivity(i);
                         Toast.makeText(getContext(), "Login successful",
                                 Toast.LENGTH_SHORT).show();
@@ -95,6 +100,18 @@ public class LoginFragment extends Fragment {
 
         initVariables();
         ((WelcomeActivity) getActivity()).checkConnection();
+
+        binding.rememberCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    WelcomeActivity.dataStoreHelper.putStringValue("remember_login", "1");
+                else
+                    WelcomeActivity.dataStoreHelper.putStringValue("remember_login", "0");
+                String isRemember = WelcomeActivity.dataStoreHelper.getStringValue("remember_login");
+                Log.i("Remember Login", isRemember);
+            }
+        });
 
         binding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override

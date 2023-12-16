@@ -4,13 +4,14 @@ import android.util.Log;
 
 import com.ninegroup.weather.api.ApiService;
 import com.ninegroup.weather.api.User;
+import com.ninegroup.weather.ui.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserClient {
-    private final String accessToken = TokenClient.accessToken;
+    private final String accessToken = MainActivity.accessToken;
     private final ApiService apiService = ApiClient.getClient(accessToken).create(ApiService.class);
     private User user;
     public static Boolean isUserRunning = true;

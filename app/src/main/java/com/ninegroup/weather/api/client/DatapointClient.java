@@ -6,6 +6,7 @@ import androidx.collection.ArrayMap;
 
 import com.ninegroup.weather.api.ApiService;
 import com.ninegroup.weather.api.Datapoint;
+import com.ninegroup.weather.ui.MainActivity;
 
 import org.json.JSONObject;
 
@@ -18,7 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DatapointClient {
-    private String accessToken = TokenClient.accessToken;
+    private String accessToken = MainActivity.accessToken;
     private ApiService apiService = ApiClient.getClient(accessToken).create(ApiService.class);
     //private DatapointRequest body;
     public static List<Datapoint> datapointList;

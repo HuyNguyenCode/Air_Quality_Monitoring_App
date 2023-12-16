@@ -76,6 +76,19 @@ public class HomeFragment extends Fragment {
         binding.humidityStatus.setText(AssetClient.humidity + "%");
         binding.rainStatus.setText(AssetClient.rainfall + " mm");
         binding.windStatus.setText(AssetClient.windSpeed + " km/h");
+        handler.postDelayed(updateUI, 200);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(updateUI);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        handler.removeCallbacks(updateUI);
     }
 
     @Override

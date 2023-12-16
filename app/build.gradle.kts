@@ -60,7 +60,7 @@ dependencies {
 
     // Preferences DataStore (SharedPreferences like APIs)
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    //implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
     // optional - RxJava2 support
     implementation("androidx.datastore:datastore-preferences-rxjava2:1.0.0")
@@ -70,7 +70,7 @@ dependencies {
 
     // Typed DataStore (Typed API surface, such as Proto)
     implementation("androidx.datastore:datastore:1.0.0")
-    implementation("androidx.datastore:datastore-core:1.0.0")
+    //implementation("androidx.datastore:datastore-core:1.0.0")
 
     // optional - RxJava2 support
     implementation("androidx.datastore:datastore-rxjava2:1.0.0")

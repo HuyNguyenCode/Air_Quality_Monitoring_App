@@ -50,6 +50,17 @@ public class UserInfoFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        binding.signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.dataStoreHelper.putStringValue("access_token", null);
+                Intent i = new Intent(getContext(), WelcomeActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
     }
 
 }

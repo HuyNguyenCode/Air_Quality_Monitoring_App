@@ -6,11 +6,15 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.datastore.preferences.core.Preferences;
+import androidx.datastore.preferences.rxjava3.RxPreferenceDataStoreBuilder;
+import androidx.datastore.rxjava3.RxDataStore;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,27 +23,55 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ninegroup.weather.R;
 import com.ninegroup.weather.api.client.AssetClient;
-import com.ninegroup.weather.api.client.TokenClient;
+import com.ninegroup.weather.data.DataStoreHelper;
+import com.ninegroup.weather.data.DataStoreSingleton;
 import com.ninegroup.weather.databinding.ActivityMainBinding;
 import com.ninegroup.weather.network.ConnectionReceiver;
 
 public class MainActivity extends AppCompatActivity implements ConnectionReceiver.ReceiverListener {
+    RxDataStore<Preferences> dataStoreRX;
+    public static DataStoreHelper dataStoreHelper;
     private ActivityMainBinding binding;
+    private static final String TAG_STORE_NAME = "settings";
+    private String isRemember;
     public static boolean isConnected;
+    public static String accessToken;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         EdgeToEdge.enable(this);
+
+        dataStoreRX = new RxPreferenceDataStoreBuilder(this, TAG_STORE_NAME).build();
+        DataStoreSingleton dataStoreSingleton = DataStoreSingleton.getInstance();
+        if (dataStoreSingleton.getDataStore() == null) {
+            dataStoreRX = new RxPreferenceDataStoreBuilder(this, TAG_STORE_NAME).build();
+        } else {
+            dataStoreRX = dataStoreSingleton.getDataStore();
+        }
+        dataStoreSingleton.setDataStore(dataStoreRX);
+
+        dataStoreHelper = new DataStoreHelper(this, dataStoreRX);
+
         super.onCreate(savedInstanceState);
         // Set the layout file as the content view.
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        if (TokenClient.accessToken == null) {
+        accessToken = dataStoreHelper.getStringValue("access_token");
+        Log.i("Access Token", accessToken);
+
+        isRemember = dataStoreHelper.getStringValue("remember_login");
+        if (isRemember.equals("0"))
+            dataStoreHelper.putStringValue("access_token", null);
+
+        if (accessToken == null || accessToken.equals("null")) {
+            Log.i("Main Activity", "Started WelcomeActivity");
+//            HomeFragment.handler.removeCallbacks(HomeFragment.updateUI);
             startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
         }
         else {
+            Log.i("Main Activity", "Getting Asset information");
             AssetClient assetClient = new AssetClient();
             assetClient.getAsset();
 
@@ -79,5 +111,10 @@ public class MainActivity extends AppCompatActivity implements ConnectionReceive
     @Override
     public void onNetworkChange(boolean isConnected) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
