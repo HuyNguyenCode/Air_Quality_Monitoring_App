@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:elevation="0dp"
-            app:title="User"
+            app:title="@string/user_settings"
+            app:titleCentered="true"
             app:liftOnScroll="true"
             app:layout_collapseMode="pin"/>
 

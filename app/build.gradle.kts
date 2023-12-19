@@ -18,10 +18,11 @@ android {
 
     defaultConfig {
         applicationId = "com.ninegroup.weather"
-        minSdk = 33
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        resourceConfigurations += listOf("en", "vi", "zh")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,7 +52,7 @@ dependencies {
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.21"))
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.compose.material3:material3:1.1.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.preference:preference-ktx:1.2.1")
@@ -78,7 +79,7 @@ dependencies {
     // optional - RxJava3 support
     implementation("androidx.datastore:datastore-rxjava3:1.0.0")
 
-    val navVersion = "2.7.5"
+    val navVersion = "2.7.6"
 
     // Java language implementation
     implementation("androidx.navigation:navigation-fragment:$navVersion")

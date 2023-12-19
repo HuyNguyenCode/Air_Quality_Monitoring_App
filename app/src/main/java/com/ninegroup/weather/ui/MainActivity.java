@@ -12,6 +12,8 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 import androidx.datastore.preferences.core.Preferences;
 import androidx.datastore.preferences.rxjava3.RxPreferenceDataStoreBuilder;
 import androidx.datastore.rxjava3.RxDataStore;
@@ -74,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionReceive
             Log.i("Main Activity", "Getting Asset information");
             AssetClient assetClient = new AssetClient();
             assetClient.getAsset();
+            assetClient.getExtraAsset();
+            assetClient.getAirQualityAsset();
 
             NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
             NavController navController = navHostFragment.getNavController();
@@ -111,6 +115,11 @@ public class MainActivity extends AppCompatActivity implements ConnectionReceive
     @Override
     public void onNetworkChange(boolean isConnected) {
 
+    }
+
+    static void changeLanguage(String lang) {
+        // Implement your app language change logic here
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(lang));
     }
 
     @Override

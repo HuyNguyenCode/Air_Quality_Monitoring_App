@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:elevation="0dp"
-            app:title="Monitoring"
+            app:title="@string/monitoring"
             app:liftOnScroll="true"
             app:layout_collapseMode="pin"/>
 
@@ -52,7 +52,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginEnd="@dimen/margin_base"
+                    android:layout_marginEnd="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginBottom="@dimen/margin_medium"
                     android:hint="@string/sensor"
@@ -61,7 +61,7 @@
                     app:endIconMode="dropdown_menu"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/guidelineVertical">
+                    app:layout_constraintEnd_toEndOf="parent">
 
                     <AutoCompleteTextView
                         android:id="@+id/sensorTextAutoComplete"
@@ -77,17 +77,17 @@
                     android:id="@+id/attributeTextField"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/margin_base"
-                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
                     android:hint="@string/attribute"
                     app:startIconDrawable="@drawable/ic_routine_24dp"
                     app:startIconContentDescription="@string/attribute"
                     app:endIconMode="dropdown_menu"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sensorTextField"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/guidelineVertical">
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <AutoCompleteTextView
                         android:id="@+id/attributeTextAutoComplete"
@@ -131,6 +131,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_medium"
                     android:hint="@string/time_range"
                     app:endIconMode="clear_text"
@@ -161,7 +162,7 @@
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_large"
-                android:text="@string/view"
+                android:text="@string/view_chart"
                 app:layout_constraintTop_toBottomOf="@id/textFieldLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

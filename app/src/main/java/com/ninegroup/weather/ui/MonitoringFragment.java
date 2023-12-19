@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -42,7 +45,8 @@ public class MonitoringFragment extends Fragment {
     private final static String TIME_TAG = "TimePicker";
     private MaterialTimePicker timePicker;
     private MaterialDatePicker<Pair<Long, Long>> dateRangePicker;
-    private SimpleDateFormat dateParse = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
+    private final SimpleDateFormat dateParse = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
+    //private final DateFormat dateParse1 = DateFormat.getDateInstance();
     private Handler handler;
     private Runnable updateUI;
     private Runnable timedOut;
@@ -70,7 +74,8 @@ public class MonitoringFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initVariables();
+        prepareBackgroundThreads();
+        setUpLineChart();
         setUpDateRangePicker();
         setUpTimePicker();
         ((MainActivity) getActivity()).checkConnection();
@@ -167,25 +172,7 @@ public class MonitoringFragment extends Fragment {
         });
     }
 
-    private void setUpTimePicker() {
-        timePicker = new MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_12H)
-                .setHour(12)
-                .setMinute(10)
-                .setTitleText("Select time")
-                .build();
-
-        timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timePicked = timePicker.getHour() + ":" + timePicker.getMinute();
-                Log.i("Time", timePicked);
-                openDateRangePicker();
-            }
-        });
-    }
-
-    private void initVariables() {
+    private void prepareBackgroundThreads() {
         handler = new Handler();
         updateUI = new Runnable() {
             @Override
@@ -201,8 +188,12 @@ public class MonitoringFragment extends Fragment {
                             entries.add(new Entry(data.getX(), data.getY()));
                         }
                         LineDataSet dataSet = new LineDataSet(entries, "Temperature"); // add entries to dataset
-                        //dataSet.setColor(...);
+                        //dataSet.setColors(new int[]{R.color.chart_1, R.color.chart_2, R.color.chart_3,
+                                //R.color.chart_4, R.color.chart_5, R.color.chart_6, R.color.chart_7}, getContext());
                         //dataSet.setValueTextColor(...); // styling, ...
+                        dataSet.setLineWidth(1.5f);
+                        dataSet.setColor(com.google.android.material.R.color.material_dynamic_primary70);
+                        dataSet.setCircleColor(com.google.android.material.R.color.material_dynamic_primary70);
                         LineData lineData = new LineData(dataSet);
                         binding.lineChart.setData(lineData);
                         binding.lineChart.invalidate(); // refresh
@@ -231,10 +222,48 @@ public class MonitoringFragment extends Fragment {
         };
     }
 
+    private void setUpLineChart() {
+        XAxis xAxis = binding.lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setLabelCount(5, false);
+
+        YAxis yAxisLeft = binding.lineChart.getAxisLeft();
+        YAxis yAxisRight = binding.lineChart.getAxisRight();
+        yAxisRight.setEnabled(false);
+        yAxisLeft.setLabelCount(5,false);
+
+        Legend legend = binding.lineChart.getLegend();
+        legend.setForm(Legend.LegendForm.LINE);
+
+        //binding.lineChart.xAxis.valueFormatter = xA();
+        binding.lineChart.setHardwareAccelerationEnabled(true);
+        binding.lineChart.setNoDataText(getString(R.string.chart_no_data));
+        //binding.lineChart.setMaxVisibleValueCount(6);
+    }
+
+    private void setUpTimePicker() {
+        timePicker = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_12H)
+                .setHour(12)
+                .setMinute(10)
+                .setTitleText(getString(R.string.select_time))
+                .build();
+
+        timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timePicked = timePicker.getHour() + ":" + timePicker.getMinute();
+                Log.i("Time", timePicked);
+                openDateRangePicker();
+            }
+        });
+    }
+
     private void setUpDateRangePicker() {
         dateRangePicker =
                 MaterialDatePicker.Builder.dateRangePicker()
-                .setTitleText("Select dates")
+                .setTitleText(getString(R.string.select_date_range))
                 .setSelection(
                         new Pair<>(
                                 MaterialDatePicker.thisMonthInUtcMilliseconds(),
@@ -295,6 +324,12 @@ public class MonitoringFragment extends Fragment {
         toTimestamp = endDateParsed.getTime();
         Log.i("Start Timestamp", fromTimestamp.toString());
         Log.i("End Timestamp", toTimestamp.toString());
+    }
+
+    private String convertToLocalTime(Long dateTime) {
+        String date = Instant.ofEpochMilli(dateTime).
+                atZone(ZoneId.systemDefault()).toLocalDate().toString();
+        return date;
     }
 
     @Override

@@ -112,7 +112,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginStart="@dimen/margin_divider"
         android:layout_marginEnd="@dimen/margin_base"
-        android:background="#4D000000"
+        android:background="?android:attr/textColorSecondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/orText"
         app:layout_constraintBottom_toTopOf="@id/googleButton"/>
@@ -139,7 +139,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginStart="@dimen/margin_base"
         android:layout_marginEnd="@dimen/margin_divider"
-        android:background="#4D000000"
+        android:background="?android:attr/textColorSecondary"
         app:layout_constraintStart_toEndOf="@id/orText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/googleButton"/>

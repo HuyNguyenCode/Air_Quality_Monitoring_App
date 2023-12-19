@@ -16,10 +16,6 @@ public interface ApiService {
     @GET("api/master/user/user")
     Call<User> getUser(@Header("Authorization") String token);
 
-//    @PUT("api/master/user/{realm}/reset-password/{id}")
-//    Call<User> resetPassword(@Header("Authorization") String token, @Path("realm") String realm,
-//                             @Path("id") String id, @Body Param param);
-
     @GET("api/master/asset/{assetID}")
     Call<Asset> getAsset(@Path("assetID") String assetID);//, @Header("Authorization") String auth);
 

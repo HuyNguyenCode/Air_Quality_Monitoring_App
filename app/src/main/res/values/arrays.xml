@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="sensors">
-        <item>Weather</item>
-        <item>Air Quality</item>
+        <item>@string/weather</item>
+        <item>@string/air_quality</item>
     </array>
 
     <array name="weather_attributes">
@@ -13,16 +13,16 @@
     </array>
 
     <array name="air_quality_attributes">
-        <item>AQI</item>
-        <item>AQI Predict</item>
-        <item>CO2</item>
-        <item>CO2 Average</item>
-        <item>NO</item>
-        <item>NO2</item>
-        <item>O3</item>
-        <item>PM10</item>
-        <item>PM2.5</item>
-        <item>SO2</item>
+        <item>@string/aqi</item>
+        <item>@string/aqi_predict</item>
+        <item>@string/co2</item>
+        <item>@string/co2_average</item>
+        <item>@string/no_aq</item>
+        <item>@string/no2</item>
+        <item>@string/o3</item>
+        <item>@string/pm10</item>
+        <item>@string/pm25</item>
+        <item>@string/so2</item>
     </array>
 
     <array name="timeframe">
